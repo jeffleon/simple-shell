@@ -1,7 +1,7 @@
 #include "holberton.h"
 /**
  * split_word - function that split a string
- * @cadena: string to strtok
+ * @cadena: string to strtok and other
  * Return: string split
  */
 

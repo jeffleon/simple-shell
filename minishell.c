@@ -1,7 +1,7 @@
 #include "holberton.h"
 /**
  * sighandler - main function
- * @signum: signal
+ * @signum: its a number
  * Return: zero
  */
 void sighandler(int signum)

@@ -24,7 +24,8 @@ int main(void)
 	signal(SIGINT, sighandler);
 	while (linesize != EOF)
 	{
-		write(1, "$", 1);
+		if ((isatty(0)))
+			write(1, "$", 1);
 		linesize = getline(&line, &len, stdin);
 		if (linesize > 1)
 			line[linesize - 1] = '\0';
@@ -37,6 +38,8 @@ int main(void)
 		execute_v(split_2, &count_cmd, &countfree);
 		wait(NULL);
 		free_function(split_2, &countfree);
+		if (!(isatty(0)))
+			break;
 	}
 	write(1, "\n", 1);
 	free(line);

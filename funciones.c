@@ -47,7 +47,7 @@ char **split_word(char *cadena, int *countfree)
 /**
  * free_function - function that split a string
  * @from: array
- * @countfree:
+ * @countfree: has a other number
  * Return: void
  */
 void free_function(char **from, int *countfree)

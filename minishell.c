@@ -1,14 +1,17 @@
 #include "holberton.h"
 /**
- * main - main function
+ * sighandler - main function
+ * @signum: signal
  * Return: zero
  */
-
 void sighandler(int signum)
 {
 	write(1, "\n$", 2);
-        return;
 }
+/**
+ * main - main function
+ * Return: zero
+ */
 int main(void)
 {
 	size_t len = 0;
@@ -19,12 +22,12 @@ int main(void)
 	long int count_cmd = 0;
 
 	signal(SIGINT, sighandler);
-	while(linesize != EOF)
+	while (linesize != EOF)
 	{
 		write(1, "$", 1);
 		linesize = getline(&line, &len, stdin);
 		if (linesize > 1)
-			line[linesize -1] = '\0';
+			line[linesize - 1] = '\0';
 		else
 			continue;
 		count_cmd++;
@@ -35,7 +38,7 @@ int main(void)
 		wait(NULL);
 		free_function(split_2, &countfree);
 	}
-	write(1,"\n",1);
+	write(1, "\n", 1);
 	free(line);
 	return (0);
 }

@@ -21,18 +21,28 @@ char** split_word(char *cadena, int *countfree)
 			count++;
 		i++;
 	}
-	from = malloc(sizeof(char *) * (count + 2));
+	count = count + 2;
+	from = malloc(sizeof(char *) * (count));
 	if(from == NULL)
 		return(NULL);
-	aux = strtok(cadena, token);
 	i = 0;
-	while(aux != NULL)
+	if(count > 2)
 	{
-	   	from[i] = strdup(aux);
-		aux = strtok(NULL, token);
-		i++;
+		aux = strtok(cadena, token);
+		while(aux != NULL)
+		{
+			from[i] = strdup(aux);
+			aux = strtok(NULL, token);
+			i++;
+		}
+		from[i] = NULL;
 	}
-	*countfree = count + 1;
+	else
+	{
+		from[i] = strdup(cadena);
+		from[i + 1] = NULL;
+	}
+	*countfree = count;
 	return(from);
 }
 /**
@@ -47,8 +57,8 @@ void free_function(char **from, int *countfree)
 
 	while (i < *countfree)
 	{
-	free(from[i]);
-	i++;
+		free(from[i]);
+		i++;
 	}
 	free(from);
 }
@@ -69,14 +79,12 @@ void execute_v(char **ln_cmd, long int *count_cmd, int *words)
 	   	execve(ln_cmd[0], ln_cmd, NULL);
 	}
 	else{
-
-		if (*words > 2)
+		if (*words > 3)
 			word_to_send = ln_cmd[2];
-		else if (*words < 2 && *ln_cmd[1] == '/')
+		else if (*words == 3 && *ln_cmd[1] == '/')
 			word_to_send = ln_cmd[1];
 		else
 			word_to_send = cadena;
-
 		errores(ln_cmd[0], word_to_send, count_cmd);
 	}
 }
@@ -138,7 +146,8 @@ void errores(char *split_arg0, char *split_arg2, long int *count_cmd)
             msg_error[z]  = msg[countarg];
         }
     }
-write(1, msg_error, valor_total);
+    write(1, msg_error, valor_total);
+    free(msg_error);
 }
 
 char *print_integers(long int *j, int *r)

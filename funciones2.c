@@ -1,0 +1,115 @@
+#include "holberton.h"
+/**
+ * split_word - function that split a string
+ * @cadena: string to strtok
+ * Return: string split
+ */
+dir *addnode(dir **head, char *aux)
+{
+	dir *nuevopath = NULL;
+
+	if (!nuevopath)
+		return(NULL);
+	if (!head)
+		return(NULL);
+	nuevopath = malloc(sizeof(dir));
+	nuevopath->direccion = strdup(aux);
+	nuevopath->next = *head;
+	*head = nuevopath;
+	return (*head);
+}
+/**
+ * split_word - function that split a string
+ * @cadena: string to strtok
+ * Return: string split
+ */
+dir *split_path(char *path, int *count_list)
+{
+	char delim[] = "=:";
+	char *aux = NULL;
+	dir *head = NULL;
+
+	aux = strtok(path, delim);
+	for (*count_list = 0; aux != NULL; *count_list += 1)
+	{
+		if (*count_list > 0)
+			addnode(&head, aux);
+		aux = strtok(NULL, delim);
+	}
+	return (head);
+}
+char *concat(char *direccion ,char *comand)
+{
+	char *concat = NULL;
+	int i, j , z, count = 0, size = 0;
+
+	for(i = 0; direccion[i]; i++)
+	{}
+	for(j = 0; comand[j]; j++)
+	{}
+	size = i + j + 2;
+	concat = malloc(sizeof(char) * (size));
+	for (z = 0; z < size; z++, count++)
+	{
+		if(z < i)
+			concat[z] = direccion[count];
+		else
+		{
+			if (z == i)
+				concat[z] = '/';
+			else
+			{
+				if (z == (i + 1))
+					count = 0;
+				concat[z] = comand[count];
+			}
+		}
+	}
+	return(concat);
+}
+/**
+ * split_word - function that split a string
+ * @cadena: string to strtok
+ * Return: string split
+ */
+void _verification(dir **head, char **source)
+{
+	dir *copia = *head;
+	char *cmd_ver = NULL;
+	char *rep_ver = NULL;
+
+	for (; copia; copia = copia->next)
+	{
+		cmd_ver = concat(copia->direccion, source[0]);
+	}
+}
+/**
+ * split_word - function that split a string
+ * @cadena: string to strtok
+ * Return: string split
+ */
+char  *_catchPATH(char **environ)
+{
+	char *aux = "PATH";
+	char **env = (char **)environ[0];
+	char *path = NULL;
+	int j = 0, i = 0;
+
+	for (i = 0; env[i] != NULL; i++)
+	{
+		for (j = 0; *(env[i] + j); j++)
+		{
+			if (*(env[i] + j) != aux[j])
+			{
+				break;
+			}
+		}
+		if (j == 4)
+		{
+			path = env[i];
+			break;
+		}
+	}
+	printf("\n %s \n", path);
+	return (path);
+}

@@ -17,10 +17,13 @@ int main(void)
 	size_t len = 0;
 	char *line = NULL;
 	ssize_t linesize = 0;
+	char *_path = NULL;
 	char **split_2 = NULL;
 	int countfree = 0;
 	long int count_cmd = 0;
+	extern char *environ[];
 
+	_path = _catchPATH(environ);
 	signal(SIGINT, sighandler);
 	while (linesize != EOF)
 	{

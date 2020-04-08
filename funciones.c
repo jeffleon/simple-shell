@@ -4,6 +4,7 @@
  * @cadena: string to strtok and other
  * Return: string split
  */
+void errores(char *split_arg0, char *split_arg2, long int *count_cmd);
 
 char **split_word(char *cadena, int *countfree)
 {
@@ -88,6 +89,34 @@ void execute_v(char **ln_cmd, long int *count_cmd, int *words)
 		errores(ln_cmd[0], word_to_send, count_cmd);
 	}
 }
+
+char *print_integers(long int *j, int *r)
+{
+        char *p = NULL;
+        long int i = 0;
+        long int aux = *j;
+        int retorno = 0;
+
+        while (aux / 10 > 0)
+        {
+                aux = aux / 10;
+                i++;
+        }
+        retorno = i;
+        p = malloc(sizeof(char) * (i + 1));
+        while (*j / 10 > 0)
+        {
+                p[i] = *j % 10 + '0';
+                *j = *j / 10;
+                i--;
+        }
+        p[i] = *j % 10 + '0';
+        retorno++;
+        *r = retorno;
+        return (p);
+}
+
+
 void errores(char *split_arg0, char *split_arg2, long int *count_cmd)
 {
 	int i, j, w = 0, z = 0, countarg = 0, valor_total = 0;
@@ -140,30 +169,5 @@ void errores(char *split_arg0, char *split_arg2, long int *count_cmd)
 	}
 	write(1, msg_error, valor_total);
 	free(msg_error);
-}
-
-char *print_integers(long int *j, int *r)
-{
-	char *p = NULL;
-	long int i = 0;
-	long int aux = *j;
-	int retorno = 0;
-
-	while (aux / 10 > 0)
-	{
-		aux = aux / 10;
-		i++;
-	}
-	retorno = i;
-	p = malloc(sizeof(char) * (i + 1));
-	while (*j / 10 > 0)
-	{
-		p[i] = *j % 10 + '0';
-		*j = *j / 10;
-		i--;
-	}
-	p[i] = *j % 10 + '0';
-	retorno++;
-	*r = retorno;
-	return (p);
+	free(p);
 }

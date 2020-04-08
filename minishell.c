@@ -38,7 +38,7 @@ int main(void)
 		execute_v(split_2, &count_cmd, &countfree);
 		wait(NULL);
 		free_function(split_2, &countfree);
-		if (!(isatty(0)))
+		if (!(isatty(0))) /* Implement function isatty*/
 			break;
 	}
 	write(1, "\n", 1);

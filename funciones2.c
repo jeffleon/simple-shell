@@ -9,11 +9,11 @@ dir *addnode(dir **head, char *aux)
 {
 	dir *nuevopath = NULL;
 
+	nuevopath = malloc(sizeof(dir));
 	if (!nuevopath)
 		return (NULL);
 	if (!head)
 		return (NULL);
-	nuevopath = malloc(sizeof(dir));
 	nuevopath->direccion = strdup(aux);
 	nuevopath->next = *head;
 	*head = nuevopath;
@@ -35,19 +35,19 @@ dir *split_path(char *path, int *count_list)
 	for (*count_list = 0; aux != NULL; *count_list += 1)
 	{
 		if (*count_list > 0)
-			addnode(&head, aux);
+			head = addnode(&head, aux);
 		aux = strtok(NULL, delim);
 	}
 	return (head);
 }
 /**
- * concat - function that split a string
+ * _concat - function that split a string
  * @direccion: string to strtok
  * @comand: path
  * Return: string split
  */
 
-char *concat(char *direccion, char *comand)
+char *_concat(char *direccion, char *comand)
 {
 	char *concat = NULL;
 	int i, j, z, count = 0, size = 0;
@@ -58,6 +58,7 @@ char *concat(char *direccion, char *comand)
 	{}
 	size = i + j + 2;
 	concat = malloc(sizeof(char) * (size));
+	/*esto no se a liberado*/
 	for (z = 0; z < size; z++, count++)
 	{
 		if (z < i)
@@ -74,6 +75,7 @@ char *concat(char *direccion, char *comand)
 			}
 		}
 	}
+	printf("%s\n", concat);
 	return (concat);
 }
 /**
@@ -86,11 +88,10 @@ void _verification(dir **head, char **source)
 {
 	dir *copia = *head;
 	char *cmd_ver = NULL;
-	char *rep_ver = NULL;
 
 	for (; copia; copia = copia->next)
 	{
-		cmd_ver = concat(copia->direccion, source[0]);
+		cmd_ver = _concat(copia->direccion, source[0]);
 	}
 }
 /**
@@ -120,6 +121,5 @@ char  *_catchPATH(char **environ)
 			break;
 		}
 	}
-	printf("\n %s \n", path);
 	return (path);
 }

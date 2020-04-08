@@ -21,10 +21,12 @@ void execute_v(char **ln_cmd, long int *count_cmd, int *words);
 char *print_integers(long int *j, int *retorno);
 void errores(char *split_arg0, char *split_arg2, long int *count_cmd);
 
-char *concat(char *direccion ,char *comand);
+char *_concat(char *direccion ,char *comand);
 void _verification(dir **head, char **source);
 dir *split_path(char *path, int *count_list);
 dir *addnode(dir **head, char *aux);
 char  *_catchPATH(char **environ);
+
+void free_list(dir *head);
 
 #endif

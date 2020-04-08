@@ -14,16 +14,18 @@ void sighandler(int signum)
  */
 int main(void)
 {
+	dir *head = NULL;
 	size_t len = 0;
 	char *line = NULL;
 	ssize_t linesize = 0;
 	char *_path = NULL;
 	char **split_2 = NULL;
-	int countfree = 0;
+	int countfree = 0, count_list = 0;
 	long int count_cmd = 0;
 	extern char *environ[];
 
 	_path = _catchPATH(environ);
+	head = split_path(_path, &count_list);
 	signal(SIGINT, sighandler);
 	while (linesize != EOF)
 	{
@@ -38,6 +40,7 @@ int main(void)
 		split_2 = split_word(line, &countfree);
 		if (split_2 == NULL)
 			continue;
+		_verification(&head, split_2);
 		execute_v(split_2, &count_cmd, &countfree);
 		wait(NULL);
 		free_function(split_2, &countfree);
@@ -45,6 +48,7 @@ int main(void)
 			break;
 	}
 	write(1, "\n", 1);
+	free_list(head);
 	free(line);
 	return (0);
 }

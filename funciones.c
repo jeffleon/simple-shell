@@ -1,20 +1,28 @@
 #include "holberton.h"
 /**
- * split_word - function that split a string
- * @cadena: string to strtok
- * Return: string split
+ * errores - function that split a string
+ * @split_arg0: string to strtok and other
+ * @count_cmd: count
+ * @split_arg2: count
+ */
+void errores(char *split_arg0, char *split_arg2, long int *count_cmd);
+
+/**
+ * split_word - function that create a child
+ * @cadena: line of comands
+ * @countfree: count
+ * Return: pointer char
  */
 
-char** split_word(char *cadena, int *countfree)
+char **split_word(char *cadena, int *countfree)
 {
 	char **from = NULL;
 	char token[] = " ";
 	char *aux = NULL;
 	int i = 0, count = 0;
 
-	if(cadena == NULL)
-		return(NULL);
-
+	if (cadena == NULL)
+		return (NULL);
 	while (cadena[i])
 	{
 		if (cadena[i] == token[0] && cadena[i + 1] != '\0')
@@ -23,13 +31,13 @@ char** split_word(char *cadena, int *countfree)
 	}
 	count = count + 2;
 	from = malloc(sizeof(char *) * (count));
-	if(from == NULL)
-		return(NULL);
+	if (from == NULL)
+		return (NULL);
 	i = 0;
-	if(count > 2)
+	if (count > 2)
 	{
 		aux = strtok(cadena, token);
-		while(aux != NULL)
+		while (aux != NULL)
 		{
 			from[i] = strdup(aux);
 			aux = strtok(NULL, token);
@@ -43,13 +51,13 @@ char** split_word(char *cadena, int *countfree)
 		from[i + 1] = NULL;
 	}
 	*countfree = count;
-	return(from);
+	return (from);
 }
 /**
  * free_function - function that split a string
  * @from: array
- * @countfree:
- * Return: void
+ * @countfree: has a other number
+ *
  */
 void free_function(char **from, int *countfree)
 {
@@ -65,7 +73,9 @@ void free_function(char **from, int *countfree)
 /**
  * execute_v - function that create a child
  * @ln_cmd: line of comands
- * Return: void
+ * @count_cmd: count
+ * @words: string
+ *
  */
 void execute_v(char **ln_cmd, long int *count_cmd, int *words)
 {
@@ -73,12 +83,13 @@ void execute_v(char **ln_cmd, long int *count_cmd, int *words)
 	char *word_to_send = '\0';
 	char cadena[] = "sh";
 
-	if(stat(ln_cmd[0], &st) != -1)
+	if (stat(ln_cmd[0], &st) != -1)
 	{
 		if (fork() == 0)
-	   	execve(ln_cmd[0], ln_cmd, NULL);
+			execve(ln_cmd[0], ln_cmd, NULL);
 	}
-	else{
+	else
+	{
 		if (*words > 3)
 			word_to_send = ln_cmd[2];
 		else if (*words == 3 && *ln_cmd[1] == '/')
@@ -88,90 +99,97 @@ void execute_v(char **ln_cmd, long int *count_cmd, int *words)
 		errores(ln_cmd[0], word_to_send, count_cmd);
 	}
 }
-void errores(char *split_arg0, char *split_arg2, long int *count_cmd)
-{
-    int i, j, w = 0, z = 0, countarg = 0;
-    char *msg_error = '\0';
-    char msg[] = ": not found\n";
-    char *p = '\0';
-    int valor_total  = 0;
-    char add[] = ": ";
-
-
-    p = print_integers(count_cmd, &w);
-    for(j = 0; split_arg0[j] != '\0'; j++)
-    {}
-    for(i = 0; split_arg2[i] != '\0'; i++)
-    {}
-    valor_total = (i + j + w + 17);
-    msg_error = malloc(sizeof(char) * (valor_total));
-
-    if (msg_error == '\0')
-        return;
-    for (z = 0; z < valor_total; z++, countarg++)
-    {
-        if (z < i)
-            msg_error[z] = split_arg2[countarg];
-
-        else if(z < (i + 2))
-        {
-        if(z == i)
-        countarg = 0;
-        msg_error[z] = add[countarg];
-        }
-        else if(z < (i + w + 2))
-        {
-            if(z == (i + 2))
-                countarg = 0;
-            msg_error[z] = p[countarg];
-
-        }
-        else if (z < (i + w + 4))
-        {
-          if (z == (i + w + 2))
-          countarg = 0;
-          msg_error[z] = add[countarg];
-        }
-        else if(z < (i + w + j + 4))
-        {
-            if (z == (i + w + 4))
-                countarg = 0;
-            msg_error[z] = split_arg0[countarg];
-        }
-        else
-        {
-
-            if (z == (i + w + j + 4))
-                countarg = 0;
-            msg_error[z]  = msg[countarg];
-        }
-    }
-    write(1, msg_error, valor_total);
-    free(msg_error);
-}
-
+/**
+ * print_integers - function that create a child
+ * @j: line of comands
+ * @r: count
+ * Return: a char integers
+ */
 char *print_integers(long int *j, int *r)
 {
-    char *p = NULL;
-    long int i = 0;
-    long int aux = *j;
-    int retorno = 0;
+	char *p = NULL;
+	long int i = 0;
+	long int aux = *j;
+	int retorno = 0;
 
-    while (aux / 10 > 0)
-    {
-        aux = aux / 10;
-        i++;
-    }
-    retorno = i;
-    p = malloc(sizeof(char)*(i + 1));
-    while (*j / 10 > 0)
-    {
-        p[i] = *j % 10 + '0';
-        *j = *j / 10;
-        i--;
-    }
-    p[i] = *j % 10 + '0';
-    retorno++;
-    *r = retorno;
-    return (p);
+	while (aux / 10 > 0)
+	{
+		aux = aux / 10;
+		i++;
+	}
+	retorno = i;
+	p = malloc(sizeof(char) * (i + 1));
+	while (*j / 10 > 0)
+	{
+		p[i] = *j % 10 + '0';
+		*j = *j / 10;
+		i--;
+	}
+	p[i] = *j % 10 + '0';
+	retorno++;
+	*r = retorno;
+	return (p);
+}
+
+/**
+ * errores - function that create a child
+ * @split_arg0: argument
+ * @split_arg2: argument
+ * @count_cmd: argument
+ *
+ */
+
+void errores(char *split_arg0, char *split_arg2, long int *count_cmd)
+{
+	int i, j, w = 0, z = 0, countarg = 0, valor_total = 0;
+	char *msg_error = '\0', msg[] = ": not found\n", add[] = ": ";
+	char *p = '\0';
+
+	p = print_integers(count_cmd, &w);
+	for (j = 0; split_arg0[j] != '\0'; j++)
+	{}
+	for (i = 0; split_arg2[i] != '\0'; i++)
+	{}
+	valor_total = (i + j + w + 17);
+	msg_error = malloc(sizeof(char) * (valor_total));
+	if (msg_error == '\0')
+		return;
+	for (z = 0; z < valor_total; z++, countarg++)
+	{
+		if (z < i)
+			msg_error[z] = split_arg2[countarg];
+		else if (z < (i + 2))
+		{
+			if (z == i)
+				countarg = 0;
+			msg_error[z] = add[countarg];
+		}
+		else if (z < (i + w + 2))
+		{
+			if (z == (i + 2))
+				countarg = 0;
+			msg_error[z] = p[countarg];
+		}
+		else if (z < (i + w + 4))
+		{
+			if (z == (i + w + 2))
+				countarg = 0;
+			msg_error[z] = add[countarg];
+		}
+		else if (z < (i + w + j + 4))
+		{
+			if (z == (i + w + 4))
+				countarg = 0;
+			msg_error[z] = split_arg0[countarg];
+		}
+		else
+		{
+			if (z == (i + w + j + 4))
+				countarg = 0;
+			msg_error[z]  = msg[countarg];
+		}
+	}
+	write(1, msg_error, valor_total);
+	free(msg_error);
+	free(p);
 }

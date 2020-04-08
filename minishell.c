@@ -2,7 +2,7 @@
 /**
  * sighandler - main function
  * @signum: its a number that change
- * Return: zero
+ * Return: zero por
  */
 void sighandler(int signum)
 {

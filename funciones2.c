@@ -1,7 +1,8 @@
 #include "holberton.h"
 /**
- * split_word - function that split a string
- * @cadena: string to strtok
+ * addnode - function that split a string
+ * @head: string to strtok
+ * @aux: aux
  * Return: string split
  */
 dir *addnode(dir **head, char *aux)
@@ -9,9 +10,9 @@ dir *addnode(dir **head, char *aux)
 	dir *nuevopath = NULL;
 
 	if (!nuevopath)
-		return(NULL);
+		return (NULL);
 	if (!head)
-		return(NULL);
+		return (NULL);
 	nuevopath = malloc(sizeof(dir));
 	nuevopath->direccion = strdup(aux);
 	nuevopath->next = *head;
@@ -19,8 +20,9 @@ dir *addnode(dir **head, char *aux)
 	return (*head);
 }
 /**
- * split_word - function that split a string
- * @cadena: string to strtok
+ * split_path - function that split a string
+ * @path: string to strtok
+ * @count_list: path
  * Return: string split
  */
 dir *split_path(char *path, int *count_list)
@@ -38,20 +40,27 @@ dir *split_path(char *path, int *count_list)
 	}
 	return (head);
 }
-char *concat(char *direccion ,char *comand)
+/**
+ * concat - function that split a string
+ * @direccion: string to strtok
+ * @comand: path
+ * Return: string split
+ */
+
+char *concat(char *direccion, char *comand)
 {
 	char *concat = NULL;
-	int i, j , z, count = 0, size = 0;
+	int i, j, z, count = 0, size = 0;
 
-	for(i = 0; direccion[i]; i++)
+	for (i = 0; direccion[i]; i++)
 	{}
-	for(j = 0; comand[j]; j++)
+	for (j = 0; comand[j]; j++)
 	{}
 	size = i + j + 2;
 	concat = malloc(sizeof(char) * (size));
 	for (z = 0; z < size; z++, count++)
 	{
-		if(z < i)
+		if (z < i)
 			concat[z] = direccion[count];
 		else
 		{
@@ -65,12 +74,13 @@ char *concat(char *direccion ,char *comand)
 			}
 		}
 	}
-	return(concat);
+	return (concat);
 }
 /**
- * split_word - function that split a string
- * @cadena: string to strtok
- * Return: string split
+ * _verification - function that split a string
+ * @head: string to strtok
+ * @source: string
+ *
  */
 void _verification(dir **head, char **source)
 {
@@ -84,8 +94,8 @@ void _verification(dir **head, char **source)
 	}
 }
 /**
- * split_word - function that split a string
- * @cadena: string to strtok
+ * _catchPATH - function that split a string
+ * @environ: string to strtok
  * Return: string split
  */
 char  *_catchPATH(char **environ)

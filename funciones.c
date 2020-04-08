@@ -1,10 +1,18 @@
 #include "holberton.h"
 /**
- * split_word - function that split a string
- * @cadena: string to strtok and other
- * Return: string split
+ * errores - function that split a string
+ * @split_arg0: string to strtok and other
+ * @count_cmd: count
+ * @split_arg2: count
  */
 void errores(char *split_arg0, char *split_arg2, long int *count_cmd);
+
+/**
+ * split_word - function that create a child
+ * @cadena: line of comands
+ * @countfree: count
+ * Return: pointer char
+ */
 
 char **split_word(char *cadena, int *countfree)
 {
@@ -49,7 +57,7 @@ char **split_word(char *cadena, int *countfree)
  * free_function - function that split a string
  * @from: array
  * @countfree: has a other number
- * Return: void
+ *
  */
 void free_function(char **from, int *countfree)
 {
@@ -65,7 +73,9 @@ void free_function(char **from, int *countfree)
 /**
  * execute_v - function that create a child
  * @ln_cmd: line of comands
- * Return: void
+ * @count_cmd: count
+ * @words: string
+ *
  */
 void execute_v(char **ln_cmd, long int *count_cmd, int *words)
 {
@@ -89,33 +99,45 @@ void execute_v(char **ln_cmd, long int *count_cmd, int *words)
 		errores(ln_cmd[0], word_to_send, count_cmd);
 	}
 }
-
+/**
+ * print_integers - function that create a child
+ * @j: line of comands
+ * @r: count
+ * Return: a char integers
+ */
 char *print_integers(long int *j, int *r)
 {
-        char *p = NULL;
-        long int i = 0;
-        long int aux = *j;
-        int retorno = 0;
+	char *p = NULL;
+	long int i = 0;
+	long int aux = *j;
+	int retorno = 0;
 
-        while (aux / 10 > 0)
-        {
-                aux = aux / 10;
-                i++;
-        }
-        retorno = i;
-        p = malloc(sizeof(char) * (i + 1));
-        while (*j / 10 > 0)
-        {
-                p[i] = *j % 10 + '0';
-                *j = *j / 10;
-                i--;
-        }
-        p[i] = *j % 10 + '0';
-        retorno++;
-        *r = retorno;
-        return (p);
+	while (aux / 10 > 0)
+	{
+		aux = aux / 10;
+		i++;
+	}
+	retorno = i;
+	p = malloc(sizeof(char) * (i + 1));
+	while (*j / 10 > 0)
+	{
+		p[i] = *j % 10 + '0';
+		*j = *j / 10;
+		i--;
+	}
+	p[i] = *j % 10 + '0';
+	retorno++;
+	*r = retorno;
+	return (p);
 }
 
+/**
+ * errores - function that create a child
+ * @split_arg0: argument
+ * @split_arg2: argument
+ * @count_cmd: argument
+ *
+ */
 
 void errores(char *split_arg0, char *split_arg2, long int *count_cmd)
 {

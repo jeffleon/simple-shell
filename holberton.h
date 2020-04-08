@@ -18,5 +18,7 @@ struct comando *next;
 
 char** split_word(char *cadena, int *countfree);
 void free_function(char **from, int *countfree);
-void execute_v(char **ln_cmd, int *count_cmd);
+void execute_v(char **ln_cmd, long int *count_cmd, int *words);
+char *print_integers(long int *j, int *retorno);
+void errores(char *split_arg0, char *split_arg2, long int *count_cmd);
 #endif

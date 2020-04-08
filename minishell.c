@@ -6,7 +6,7 @@
 
 void sighandler(int signum)
 {
-	write(1, "$", 1);
+	write(1, "\n$", 2);
         return;
 }
 int main(void)
@@ -15,7 +15,8 @@ int main(void)
 	char *line = NULL;
 	ssize_t linesize = 0;
 	char **split_2 = NULL;
-	int countfree = 0, count_cmd = 0;
+	int countfree = 0;
+	long int count_cmd = 0;
 
 	signal(SIGINT, sighandler);
 
@@ -32,7 +33,7 @@ int main(void)
 	split_2 = split_word(line, &countfree);
 	if (split_2 == NULL)
 		continue;
-	execute_v(split_2, &count_cmd);
+	execute_v(split_2, &count_cmd, &countfree);
 	wait(NULL);
 	free_function(split_2, &countfree);
 	}

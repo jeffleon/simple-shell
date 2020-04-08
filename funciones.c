@@ -57,16 +57,112 @@ void free_function(char **from, int *countfree)
  * @ln_cmd: line of comands
  * Return: void
  */
-void execute_v(char **ln_cmd, int *count_cmd)
+void execute_v(char **ln_cmd, long int *count_cmd, int *words)
 {
 	struct stat st;
+	char *word_to_send = '\0';
+	char cadena[] = "sh";
 
 	if(stat(ln_cmd[0], &st) != -1)
 	{
 		if (fork() == 0)
 	   	execve(ln_cmd[0], ln_cmd, NULL);
 	}
-	else
-		printf("[%d] : %s Not Found\n", *count_cmd, ln_cmd[0]);
+	else{
 
+		if (*words > 2)
+			word_to_send = ln_cmd[2];
+		else if (*words < 2 && *ln_cmd[1] == '/')
+			word_to_send = ln_cmd[1];
+		else
+			word_to_send = cadena;
+
+		errores(ln_cmd[0], word_to_send, count_cmd);
+	}
+}
+void errores(char *split_arg0, char *split_arg2, long int *count_cmd)
+{
+    int i, j, w = 0, z = 0, countarg = 0;
+    char *msg_error = '\0';
+    char msg[] = ": not found\n";
+    char *p = '\0';
+    int valor_total  = 0;
+    char add[] = ": ";
+
+
+    p = print_integers(count_cmd, &w);
+    for(j = 0; split_arg0[j] != '\0'; j++)
+    {}
+    for(i = 0; split_arg2[i] != '\0'; i++)
+    {}
+    valor_total = (i + j + w + 17);
+    msg_error = malloc(sizeof(char) * (valor_total));
+
+    if (msg_error == '\0')
+        return;
+    for (z = 0; z < valor_total; z++, countarg++)
+    {
+        if (z < i)
+            msg_error[z] = split_arg2[countarg];
+
+        else if(z < (i + 2))
+        {
+        if(z == i)
+        countarg = 0;
+        msg_error[z] = add[countarg];
+        }
+        else if(z < (i + w + 2))
+        {
+            if(z == (i + 2))
+                countarg = 0;
+            msg_error[z] = p[countarg];
+
+        }
+        else if (z < (i + w + 4))
+        {
+          if (z == (i + w + 2))
+          countarg = 0;
+          msg_error[z] = add[countarg];
+        }
+        else if(z < (i + w + j + 4))
+        {
+            if (z == (i + w + 4))
+                countarg = 0;
+            msg_error[z] = split_arg0[countarg];
+        }
+        else
+        {
+
+            if (z == (i + w + j + 4))
+                countarg = 0;
+            msg_error[z]  = msg[countarg];
+        }
+    }
+write(1, msg_error, valor_total);
+}
+
+char *print_integers(long int *j, int *r)
+{
+    char *p = NULL;
+    long int i = 0;
+    long int aux = *j;
+    int retorno = 0;
+
+    while (aux / 10 > 0)
+    {
+        aux = aux / 10;
+        i++;
+    }
+    retorno = i;
+    p = malloc(sizeof(char)*(i + 1));
+    while (*j / 10 > 0)
+    {
+        p[i] = *j % 10 + '0';
+        *j = *j / 10;
+        i--;
+    }
+    p[i] = *j % 10 + '0';
+    retorno++;
+    *r = retorno;
+    return (p);
 }

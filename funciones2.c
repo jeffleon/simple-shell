@@ -75,24 +75,29 @@ char *_concat(char *direccion, char *comand)
 			}
 		}
 	}
-	printf("%s\n", concat);
 	return (concat);
 }
 /**
  * _verification - function that split a string
  * @head: string to strtok
  * @source: string
- *
+ * @pointer:sizeof of cmd_ver
+ * Return:cmd_ver array
  */
-void _verification(dir **head, char **source)
+char **_verification(dir **head, char **source, int *pointer)
 {
 	dir *copia = *head;
-	char *cmd_ver = NULL;
+	char **cmd_ver = NULL;
+	int i = 0;
 
-	for (; copia; copia = copia->next)
+	cmd_ver = malloc(sizeof(char *) * (*pointer));
+	for (i = 0; copia; copia = copia->next, i++)
 	{
-		cmd_ver = _concat(copia->direccion, source[0]);
+
+		cmd_ver[i] = _concat(copia->direccion, source[0]);
 	}
+	cmd_ver[i] = '\0';
+	return (cmd_ver);
 }
 /**
  * _catchPATH - function that split a string

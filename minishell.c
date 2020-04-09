@@ -1,7 +1,7 @@
 #include "holberton.h"
 /**
  * sighandler - main function
- * @signum: its a number that change
+ * @signum:integer
  * Return: zero por
  */
 void sighandler(int signum)
@@ -23,6 +23,7 @@ int main(void)
 	int countfree = 0, count_list = 0;
 	long int count_cmd = 0;
 	extern char *environ[];
+	char **test = NULL;
 
 	_path = _catchPATH(environ);
 	head = split_path(_path, &count_list);
@@ -40,9 +41,9 @@ int main(void)
 		split_2 = split_word(line, &countfree);
 		if (split_2 == NULL)
 			continue;
-		_verification(&head, split_2);
-		execute_v(split_2, &count_cmd, &countfree);
-		wait(NULL);
+		test = _verification(&head, split_2, &count_list);
+		execute_v(test, &count_cmd, &countfree, split_2);
+		free_function(test, &count_list);
 		free_function(split_2, &countfree);
 		if (!(isatty(0))) /* Implement function isatty*/
 			break;

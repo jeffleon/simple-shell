@@ -75,7 +75,6 @@ char *_concat(char *direccion, char *comand)
 			}
 		}
 	}
-	printf("%s\n", concat);
 	return (concat);
 }
 /**

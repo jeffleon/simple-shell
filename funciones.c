@@ -25,7 +25,7 @@ char **split_word(char *cadena, int *countfree)
 		return (NULL);
 	while (cadena[i])
 	{
-		if (cadena[i] == token[0] && cadena[i + 1] != '\0')
+		if (cadena[i] == token[0])
 			count++;
 		i++;
 	}
@@ -75,20 +75,30 @@ void free_function(char **from, int *countfree)
  * @ln_cmd: line of comands
  * @count_cmd: count
  * @words: string
- *
+ * @source:quantity of words that had a split_word
  */
-void execute_v(char **ln_cmd, long int *count_cmd, int *words)
+void execute_v(char **ln_cmd, long int *count_cmd, int *words, char **source)
 {
 	struct stat st;
 	char *word_to_send = '\0';
 	char cadena[] = "sh";
+	int j = 0, a = 0;
 
-	if (stat(ln_cmd[0], &st) != -1)
+	for (j = 0; ln_cmd[j]; j++)
 	{
-		if (fork() == 0)
-			execve(ln_cmd[0], ln_cmd, NULL);
+		if (stat(ln_cmd[j], &st) != -1)
+		{
+			a = fork();
+			if (a == 0)
+			{
+				printf("Ingrese al execve\n");
+				execve(ln_cmd[j], source, NULL);
+				break;
+			}
+		}
 	}
-	else
+	wait(NULL);
+	if (a == 0)
 	{
 		if (*words > 3)
 			word_to_send = ln_cmd[2];

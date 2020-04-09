@@ -8,25 +8,27 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
-
+/**
+ * struct nodo - struct
+ * @direccion:address stored of each node
+ * @next:pointer to next node
+ */
 typedef struct nodo
 {
-        char *direccion;
-        struct nodo *next;
-}dir;
+	char *direccion;
+	struct nodo *next;
+} dir;
 
-char** split_word(char *cadena, int *countfree);
+char **split_word(char *cadena, int *countfree);
 void free_function(char **from, int *countfree);
-void execute_v(char **ln_cmd, long int *count_cmd, int *words);
+void execute_v(char **ln_cmd, long int *count_cmd, int *words, char **source);
 char *print_integers(long int *j, int *retorno);
 void errores(char *split_arg0, char *split_arg2, long int *count_cmd);
-
-char *_concat(char *direccion ,char *comand);
-void _verification(dir **head, char **source);
+char *_concat(char *direccion, char *comand);
+char **_verification(dir **head, char **source, int *pointer);
 dir *split_path(char *path, int *count_list);
 dir *addnode(dir **head, char *aux);
 char  *_catchPATH(char **environ);
-
 void free_list(dir *head);
 
 #endif

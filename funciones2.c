@@ -14,7 +14,7 @@ dir *addnode(dir **head, char *aux)
 		return (NULL);
 	if (!head)
 		return (NULL);
-	nuevopath->direccion = strdup(aux);
+	nuevopath->direccion = _strdup(aux);
 	nuevopath->next = *head;
 	*head = nuevopath;
 	return (*head);

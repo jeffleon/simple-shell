@@ -82,29 +82,46 @@ void execute_v(char **ln_cmd, long int *count_cmd, int *words, char **source)
 	struct stat st;
 	char *word_to_send = '\0';
 	char cadena[] = "sh";
-	int j = 0, a = 0;
+	int j = 0, a = 0, i = 0;
 
-	for (j = 0; ln_cmd[j]; j++)
+	if (*source[0] != '/')
 	{
-		if (stat(ln_cmd[j], &st) != -1)
+		for (j = 0; ln_cmd[j]; j++)
+		{
+			if (stat(ln_cmd[j], &st) != -1)
+			{
+				a = fork();
+				if (a == 0)
+				{
+					execve(ln_cmd[j], source, NULL);
+					break;
+				}
+			}
+		}
+	}
+	else
+	{
+		if (stat(source[0], &st) != -1)
 		{
 			a = fork();
 			if (a == 0)
-			{
-				execve(ln_cmd[j], source, NULL);
-				break;
-			}
+				execve(source[0], source, NULL);
 		}
 	}
 	wait(NULL);
 	if (a == 0)
 	{
-		if (*words > 3)
-			word_to_send = source[2];
-		else if (*words == 3 && *source[1] == '/')
-			word_to_send = source[1];
-		else
-			word_to_send = cadena;
+		for (i = 1; source[i]; i++)
+		{
+			if (*source[i] == '/')
+			{
+				word_to_send = source[i];
+				break;
+			}
+			else
+				word_to_send = cadena;
+
+		}
 		errores(source[0], word_to_send, count_cmd);
 	}
 }

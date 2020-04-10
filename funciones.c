@@ -39,7 +39,7 @@ char **split_word(char *cadena, int *countfree)
 		aux = strtok(cadena, token);
 		while (aux != NULL)
 		{
-			from[i] = strdup(aux);
+			from[i] = _strdup(aux);
 			aux = strtok(NULL, token);
 			i++;
 		}
@@ -47,7 +47,7 @@ char **split_word(char *cadena, int *countfree)
 	}
 	else
 	{
-		from[i] = strdup(cadena);
+		from[i] = _strdup(cadena);
 		from[i + 1] = NULL;
 	}
 	*countfree = count;
@@ -91,7 +91,6 @@ void execute_v(char **ln_cmd, long int *count_cmd, int *words, char **source)
 			a = fork();
 			if (a == 0)
 			{
-				printf("Ingrese al execve\n");
 				execve(ln_cmd[j], source, NULL);
 				break;
 			}
@@ -101,12 +100,12 @@ void execute_v(char **ln_cmd, long int *count_cmd, int *words, char **source)
 	if (a == 0)
 	{
 		if (*words > 3)
-			word_to_send = ln_cmd[2];
-		else if (*words == 3 && *ln_cmd[1] == '/')
-			word_to_send = ln_cmd[1];
+			word_to_send = source[2];
+		else if (*words == 3 && *source[1] == '/')
+			word_to_send = source[1];
 		else
 			word_to_send = cadena;
-		errores(ln_cmd[0], word_to_send, count_cmd);
+		errores(source[0], word_to_send, count_cmd);
 	}
 }
 /**

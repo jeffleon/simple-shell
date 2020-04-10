@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+
 /**
  * struct nodo - struct
  * @direccion:address stored of each node
@@ -30,5 +31,8 @@ dir *split_path(char *path, int *count_list);
 dir *addnode(dir **head, char *aux);
 char  *_catchPATH(char **environ);
 void free_list(dir *head);
+char *_strdup(char *str);
+int _strcmp(char *s1, char *s2);
+char *delete_spaces(char *elm_spc, int *count_words);
 
 #endif

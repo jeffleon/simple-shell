@@ -29,7 +29,7 @@ int main(void)
 	while (linesize != EOF)
 	{
 		if ((isatty(0)))
-			write(1, "$ ", 1);
+			write(1, "$ ", 2);
 		linesize = getline(&line, &len, stdin);
 		if (linesize > 1)
 			line[linesize - 1] = '\0';
@@ -37,9 +37,7 @@ int main(void)
 			continue;
 		count_cmd++;
 		word_wsp = delete_spaces(line, &count_sp);
-		//printf("PASE A ELIMINAR ESPACIOS ");
 		split_2 = split_word(word_wsp, &countfree);
-		//printf("PASE DE MATRIZ");
 		if (split_2 == NULL)
 			continue;
 		if (!(_strcmp(split_2[0], "exit")))
@@ -49,12 +47,12 @@ int main(void)
 		}
 		test = _verification(&head, split_2, &count_list);
 		execute_v(test, &count_cmd, &countfree, split_2);
-		free(word_wsp), free_function(test, &count_list);
+		wait(NULL), free(word_wsp), free_function(test, &count_list);
 		free_function(split_2, &countfree);
 		if (!(isatty(0)))
 			break; /* Implement function isatty*/
 	}
-	if (linesize == 0)
-	write(1, "\n", 1);
+	if (linesize < 2)
+		write(1, "\n", 1);
 	free_list(head), free(line);
 }

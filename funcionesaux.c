@@ -72,30 +72,26 @@ char *delete_spaces(char *elm_spc, int *count_words)
 	for (i = 0; elm_spc[i]; i++)
 	{
 		if ((elm_spc[i] != ' ' || count > 1) &&
-		    (elm_spc[i] != ' ' || (elm_spc[i + 1] != ' ' &&
-					 elm_spc[i + 1] != '\0')))
+		    (elm_spc[i] != ' ' || (elm_spc[i + 1] != ' '
+					   && elm_spc[i + 1] != '\0')))
 			count++;
 	}
-	//printf("%d\n", count);
-	copia = malloc(sizeof(char) * (count + 1));
+	count++;
+	copia = malloc(sizeof(char) * (count));
+	if (copia == NULL)
+		return (NULL);
 	count = 0;
 	for (i = 0; elm_spc[i]; i++)
 	{
 		if ((elm_spc[i] != ' ' || count > 1) &&
 		    (elm_spc[i] != ' ' || (elm_spc[i + 1] != ' ' &&
-					 elm_spc[i + 1] != '\0')))
-
+					   elm_spc[i + 1] != '\0')))
 		{
-			//printf("he entrado estas veces : [%d]", count);
-			printf("%c", elm_spc[i]);
 			copia[count] = elm_spc[i];
 			count++;
 		}
 	}
-
-       printf("\n");
-       //printf("COLOCANDO NULL");
-       copia[count] = '\0';
-       *count_words = count;
-       return (copia);
+	copia[count] = '\0';
+	*count_words = count;
+	return (copia);
 }

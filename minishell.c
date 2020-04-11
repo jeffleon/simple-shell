@@ -47,7 +47,7 @@ int main(void)
 		}
 		test = _verification(&head, split_2, &count_list);
 		execute_v(test, &count_cmd, &countfree, split_2);
-		free(word_wsp), free_function(test, &count_list);
+		wait(NULL), free(word_wsp), free_function(test, &count_list);
 		free_function(split_2, &countfree);
 		if (!(isatty(0)))
 			break; /* Implement function isatty*/

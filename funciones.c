@@ -84,7 +84,7 @@ void execute_v(char **ln_cmd, long int *count_cmd, int *words, char **source)
 	char cadena[] = "sh";
 	int j = 0, a = 0, i = 0;
 
-	if (*source[0] != '/')
+	if (*source[0] != '/' && *source[0] != 46)
 	{
 		for (j = 0; ln_cmd[j]; j++)
 		{
@@ -114,7 +114,7 @@ void execute_v(char **ln_cmd, long int *count_cmd, int *words, char **source)
 		if (*words > 2)
 		for (i = 1; source[i]; i++)
 		{
-			if (*source[i] == '/')
+			if (*source[i] == '/' || *source[i] == '.')
 			{
 				word_to_send = source[i];
 				break;

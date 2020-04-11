@@ -17,7 +17,7 @@ void errores(char *split_arg0, char *split_arg2, long int *count_cmd);
 char **split_word(char *cadena, int *countfree)
 {
 	char **from = NULL;
-	char token[] = " ";
+	char token[] = " ,\n";
 	char *aux = NULL;
 	int i = 0, count = 0;
 

@@ -40,11 +40,7 @@ int main(void)
 		split_2 = split_word(word_wsp, &countfree);
 		if (split_2 == NULL)
 			continue;
-		if (!(_strcmp(split_2[0], "exit")))
-		{
-			free_function(split_2, &countfree);
-				break;
-		}
+		_selection(split_2);
 		test = _verification(&head, split_2, &count_list);
 		execute_v(test, &count_cmd, &countfree, split_2);
 		wait(NULL), free(word_wsp), free_function(test, &count_list);

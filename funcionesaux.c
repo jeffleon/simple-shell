@@ -95,3 +95,45 @@ char *delete_spaces(char *elm_spc, int *count_words)
 	*count_words = count;
 	return (copia);
 }
+/**
+ * _selection - function that take over of to select any function
+ * @source: doble pointer
+ * Return: Always 0.
+ */
+int _selection(char **source)
+{
+	built_in comands[] = {{"exit", _exit_},
+			      {"which", _which},
+			      {"help", _help},
+			      {"cd", _cd},
+			      {NULL, NULL}};
+
+	int i = 0;
+	int j = 0;
+	int resultado = 0;
+	int strc = 0;
+
+	for (i = 0; comands[i].comandokey; i++)
+	{
+		printf("%s\n", comands[i].comandokey);
+		printf("%s\n", source[0]);
+		/*for (j = 0; *(source[i] + j) != '\0'; j++)
+		{
+			if (*(source[i] + j) == comands[i].comandokey[j])
+				resultado = 1;
+			else
+				resultado = 0;
+			printf("%s : %d\n", comands[i].comandokey, resultado);
+			}*/
+		printf("\n");
+		strc = (strcmp(source[i], comands[i].comandokey));
+		printf("%d\n", strc);
+		if ((strcmp(source[i], comands[i].comandokey)) == 0)
+		{
+			printf("entro al if\n");
+			comands[i].func(source);
+			break;
+		}
+	}
+	return (0);
+}

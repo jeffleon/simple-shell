@@ -10,6 +10,16 @@
 #include <sys/stat.h>
 
 /**
+ * struct built - struct
+ * @comandokey:select the function
+ * @func:....
+ */
+typedef struct built{
+	char *comandokey;
+	void (*func)(char **source);
+} built_in;
+
+/**
  * struct nodo - struct
  * @direccion:address stored of each node
  * @next:pointer to next node
@@ -34,5 +44,10 @@ void free_list(dir *head);
 char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
 char *delete_spaces(char *elm_spc, int *count_words);
+void _cd(char **source);
+void _which(char **source);
+void _help(char **source);
+int _selection(char **source);
+void _exit_(char **source);
 
 #endif

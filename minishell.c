@@ -37,7 +37,9 @@ int main(void)
 			continue;
 		count_cmd++;
 		word_wsp = delete_spaces(line, &count_sp);
+		//printf("PASE A ELIMINAR ESPACIOS ");
 		split_2 = split_word(word_wsp, &countfree);
+		//printf("PASE DE MATRIZ");
 		if (split_2 == NULL)
 			continue;
 		if (!(_strcmp(split_2[0], "exit")))

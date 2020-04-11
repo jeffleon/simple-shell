@@ -111,7 +111,7 @@ void execute_v(char **ln_cmd, long int *count_cmd, int *words, char **source)
 	wait(NULL);
 	if (a == 0)
 	{
-		for (i = 1; source[i]; i++)
+		for (i = 0; source[i]; i++)// i estaba inciiada en 1original
 		{
 			if (*source[i] == '/')
 			{

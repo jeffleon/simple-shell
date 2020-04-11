@@ -29,7 +29,7 @@ int main(void)
 	while (linesize != EOF)
 	{
 		if ((isatty(0)))
-			write(1, "$ ", 1);
+			write(1, "$ ", 2);
 		linesize = getline(&line, &len, stdin);
 		if (linesize > 1)
 			line[linesize - 1] = '\0';
@@ -52,7 +52,7 @@ int main(void)
 		if (!(isatty(0)))
 			break; /* Implement function isatty*/
 	}
-	if (linesize == 0)
-	write(1, "\n", 1);
+	if (linesize < 2)
+		write(1, "\n", 1);
 	free_list(head), free(line);
 }

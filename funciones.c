@@ -101,7 +101,7 @@ void execute_v(char **ln_cmd, long int *count_cmd, int *words, char **source)
 	}
 	else
 	{
-		if (stat(source[0], &st) != -1)
+		if ((stat(source[0], &st)) != -1)
 		{
 			a = fork();
 			if (a == 0)
@@ -111,6 +111,7 @@ void execute_v(char **ln_cmd, long int *count_cmd, int *words, char **source)
 	wait(NULL);
 	if (a == 0)
 	{
+		if (*words > 2)
 		for (i = 1; source[i]; i++)
 		{
 			if (*source[i] == '/')
@@ -122,6 +123,8 @@ void execute_v(char **ln_cmd, long int *count_cmd, int *words, char **source)
 				word_to_send = cadena;
 
 		}
+		else
+			word_to_send = cadena;
 		errores(source[0], word_to_send, count_cmd);
 	}
 }

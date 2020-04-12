@@ -6,7 +6,7 @@
  */
 void sighandler(int signum)
 {
-	write(1, "\n$ ", 2);
+	write(1, "\n$ ", 3);
 }
 /**
  * main - main function
@@ -20,7 +20,7 @@ int main(void)
 	ssize_t linesize = 0;
 	char *_path = NULL, *word_wsp = NULL, *line = NULL;
 	char **split_2 = NULL, **test = NULL;
-	int countfree = 0, count_list = 0, count_sp = 0;
+	int countfree = 0, count_list = 0, count_sp = 0, built_in_entry = 0;
 	long int count_cmd = 0;
 
 	_path = _catchPATH(environ);
@@ -38,11 +38,13 @@ int main(void)
 		count_cmd++;
 		word_wsp = delete_spaces(line, &count_sp);
 		split_2 = split_word(word_wsp, &countfree);
+		_salir_(line, word_wsp, split_2 , &countfree, head);
+		built_in_entry = _selection(split_2, environ, &head);
 		if (split_2 == NULL)
 			continue;
-		_selection(split_2);
-		test = _verification(&head, split_2, &count_list);
-		execute_v(test, &count_cmd, &countfree, split_2);
+		test = _verification(&head, split_2[0], &count_list);
+		if (built_in_entry == 0)
+			execute_v(test, &count_cmd, &countfree, split_2, environ);
 		wait(NULL), free(word_wsp), free_function(test, &count_list);
 		free_function(split_2, &countfree);
 		if (!(isatty(0)))

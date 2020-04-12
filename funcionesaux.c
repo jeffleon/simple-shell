@@ -100,40 +100,23 @@ char *delete_spaces(char *elm_spc, int *count_words)
  * @source: doble pointer
  * Return: Always 0.
  */
-int _selection(char **source)
+int _selection(char **source, char **environ, dir **test)
 {
-	built_in comands[] = {{"exit", _exit_},
-			      {"which", _which},
+	built_in comands[] = {{"which", _which},
 			      {"help", _help},
 			      {"cd", _cd},
+			      {"env", _env},
 			      {NULL, NULL}};
-
 	int i = 0;
-	int j = 0;
-	int resultado = 0;
-	int strc = 0;
+	int rt = 0;
 
-	for (i = 0; comands[i].comandokey; i++)
+	for (i = 0;  comands[i].comandokey != NULL ; i++)
 	{
-		printf("%s\n", comands[i].comandokey);
-		printf("%s\n", source[0]);
-		/*for (j = 0; *(source[i] + j) != '\0'; j++)
+		if ((_strcmp(source[0], comands[i].comandokey)) == 0)
 		{
-			if (*(source[i] + j) == comands[i].comandokey[j])
-				resultado = 1;
-			else
-				resultado = 0;
-			printf("%s : %d\n", comands[i].comandokey, resultado);
-			}*/
-		printf("\n");
-		strc = (strcmp(source[i], comands[i].comandokey));
-		printf("%d\n", strc);
-		if ((strcmp(source[i], comands[i].comandokey)) == 0)
-		{
-			printf("entro al if\n");
-			comands[i].func(source);
+			rt = comands[i].func(source, environ, test);
 			break;
 		}
 	}
-	return (0);
+	return (rt);
 }

@@ -77,7 +77,8 @@ void free_function(char **from, int *countfree)
  * @words: string
  * @source:quantity of words that had a split_word
  */
-void execute_v(char **ln_cmd, long int *count_cmd, int *words, char **source)
+void execute_v(char **ln_cmd, long int *count_cmd,
+	       int *words, char **source, char **environ)
 {
 	struct stat st;
 	char *word_to_send = '\0';
@@ -93,7 +94,7 @@ void execute_v(char **ln_cmd, long int *count_cmd, int *words, char **source)
 				a = fork();
 				if (a == 0)
 				{
-					execve(ln_cmd[j], source, NULL);
+					execve(ln_cmd[j], source, environ);
 					break;
 				}
 			}
@@ -105,7 +106,7 @@ void execute_v(char **ln_cmd, long int *count_cmd, int *words, char **source)
 		{
 			a = fork();
 			if (a == 0)
-				execve(source[0], source, NULL);
+				execve(source[0], source, environ);
 		}
 	}
 	wait(NULL);
@@ -125,11 +126,9 @@ void execute_v(char **ln_cmd, long int *count_cmd, int *words, char **source)
 			}
 		}
 		else
-		{
 			word_to_send = cadena;
-			errores(source[0], word_to_send, count_cmd);
+		errores(source[0], word_to_send, count_cmd);
 
-		}
 	}
 }
 /**

@@ -58,7 +58,6 @@ char *_concat(char *direccion, char *comand)
 	{}
 	size = i + j + 2;
 	concat = malloc(sizeof(char) * (size));
-	/*esto no se a liberado*/
 	for (z = 0; z < size; z++, count++)
 	{
 		if (z < i)
@@ -84,7 +83,7 @@ char *_concat(char *direccion, char *comand)
  * @pointer:sizeof of cmd_ver
  * Return:cmd_ver array
  */
-char **_verification(dir **head, char **source, int *pointer)
+char **_verification(dir **head, char *source, int *pointer)
 {
 	dir *copia = *head;
 	char **cmd_ver = NULL;
@@ -94,7 +93,7 @@ char **_verification(dir **head, char **source, int *pointer)
 	for (i = 0; copia; copia = copia->next, i++)
 	{
 
-		cmd_ver[i] = _concat(copia->direccion, source[0]);
+		cmd_ver[i] = _concat(copia->direccion, source);
 	}
 	cmd_ver[i] = '\0';
 	return (cmd_ver);

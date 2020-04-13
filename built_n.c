@@ -4,35 +4,152 @@
  * @source: doble pointer
  * Return: nothing
  */
-void _which(char **source)
+int _which(char **source, char **environ, dir **test, long int *count_cmd)
 {
-	printf("me meti which\n");
+	int j = 0, i = 0, count_list = 0;
+	struct stat st;
+	dir *copia = *test;
+	char **verificar;
+
+	for (count_list = 0; copia;copia = copia->next, count_list++)
+	{
+	}
+	count_list++;
+	if (source[1] == NULL)
+		return(1);
+        if (*source[1] != '/' && *source[1] != 46)
+        {
+		verificar = _verification(test,source[1], &count_list);
+		for (j = 0; verificar[j]; j++)
+                {
+                        if (stat(verificar[j], &st) != -1)
+			{
+				for (i = 0; *(verificar[j] + i); i++)
+				{}
+				write(1, verificar[j], i);
+				write(1, "\n", 1);
+				break;
+                        }
+		}
+		free_function(verificar, &count_list);
+        }
+        else
+        {
+                if ((stat(source[1], &st)) != -1)
+                {
+                        for (i = 0; *(source [1] + i); i++)
+			{}
+			write(1, source[1], i);
+			write(1, "\n", 1);
+                }
+	}
+	return(1);
 }
 /**
  * _cd - function that show the command cd in shell
  * @source: doble pointer
  * Return: nothing
  */
-void _cd(char **source)
+int _cd(char **source, char **environ, dir **test, long int *count_cmd)
 {
-	printf("me meti cd\n");
+	char s[100];
+	char *msg = NULL;
+	int sizenum = 0;
+
+	getcwd(s, 100);
+	if (source[1] == NULL)
+		return (1);
+	if (chdir(source[1]) != 0)
+	{
+		msg = _union(count_cmd, &sizenum);
+		perror(msg);
+		free(msg);
+	}
+	return (1);
 }
 /**
  * _help - function that show the command help in shell
  * @source: doble pointer
+ * @environ: this is the 
  * Return: nothing
  */
-void _help(char **source)
+int _help(char **source, char **environ, dir **test, long int *count_cmd)
 {
-	printf("me meti help\n");
+	ssize_t fd, read_data = 0, write_data = 0;
+	char concatenar[6] = "help_";
+	char *archivo = '\0';
+	char buf[1024];
+        int i = 0, j = 0, total = 0;
+
+	if (source[1] == NULL)
+                return (1);
+	for (i = 0; *(source[1] + i); i++)
+	{}
+	i++;
+	total = i + 5;
+	archivo = malloc(sizeof(char) * (total));
+	for (j = 0; concatenar[j]; j++)
+		archivo[j] = concatenar[j];
+	for (j = 0; *(source[1] + j); j++)
+		archivo[5 + j] = *(source[1] + j);
+	archivo[5 + j] = '\0';
+	fd = open(archivo, O_RDONLY);
+	if (fd == -1)
+		return(0);
+	while ((read_data = read(fd, buf, 1024)) > 0)
+	{
+		write_data = write(STDOUT_FILENO, buf, read_data);
+	}
+	close(fd);
+	free(archivo);
+	return(1);
 }
+
 /**
- *  _exit_ - function that show the command exit in shell
+ *  _env - function that show the command exit in shell
  * @source: doble pointer
  * Return: nothing
  */
-void _exit_(char **source)
+int _env(char **source, char **environ, dir **test, long int *count_cmd)
 {
+	int i = 0, j = 0;
+	char **env = (char **)environ[0];
 
-	printf("me meti exit\n");
+	if (environ == NULL)
+		return (1);
+	for (i = 0; env[i] != NULL; i++)
+	{
+		for(j = 0; *(env[i] + j); j++)
+		{}
+		write(1, env[i], j);
+		write(1, "\n",1);
+	}
+	return (1);
+}
+
+/**
+ *  _union - function that show the command exit in shell
+ * @source: doble pointer
+ * Return: nothing
+ */
+char *_union(long int *count_cmd, int *sizenum)
+{
+	int i = 0;
+	char *total = NULL;
+	char *num = NULL;
+	char inicio[5] = "sh: ";
+	char inter[5] = ": cd";
+
+	num = print_integers(count_cmd, sizenum);
+	total = malloc(sizeof(char) * (9 + *sizenum));
+	for (i = 0; inicio[i]; i++)
+		total[i] = inicio[i];
+	for (i = 0; i < *sizenum; i++)
+		total[4 + i] = num[i];
+	for (i = 0; inter[i]; i++)
+		total[4 + *sizenum + i] = inter[i];
+	total[4 + *sizenum + i] = '\0';
+	printf("mensaje : [%s]\n", total);
+	free(num);
+	return(total);
 }

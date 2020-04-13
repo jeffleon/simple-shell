@@ -91,6 +91,11 @@ char *delete_spaces(char *elm_spc, int *count_words)
 			count++;
 		}
 	}
+	if (copia == NULL)
+	{
+		printf("entre aqui \n");
+		return (NULL);
+	}
 	copia[count] = '\0';
 	*count_words = count;
 	return (copia);
@@ -100,7 +105,7 @@ char *delete_spaces(char *elm_spc, int *count_words)
  * @source: doble pointer
  * Return: Always 0.
  */
-int _selection(char **source, char **environ, dir **test)
+int _selection(char **source, char **environ, dir **test, long int *count_cmd)
 {
 	built_in comands[] = {{"which", _which},
 			      {"help", _help},
@@ -114,7 +119,7 @@ int _selection(char **source, char **environ, dir **test)
 	{
 		if ((_strcmp(source[0], comands[i].comandokey)) == 0)
 		{
-			rt = comands[i].func(source, environ, test);
+			rt = comands[i].func(source, environ, test, count_cmd);
 			break;
 		}
 	}

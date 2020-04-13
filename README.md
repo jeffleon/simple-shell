@@ -1,24 +1,19 @@
 # 0x16. C - Simple Shell
 ------------
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
 ![](https://blog.holbertonschool.com/wp-content/uploads/2019/04/instagram_feed180.jpg)
 
 ------------
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
 # Description
 
 ------------
 In this project we are tasked with creating our own simple **UNIX** command interpreter. Our program must have the exact same output as **sh**  **(/bin/sh)** as well as the exact same error output. The only difference is when you print an error, the name of the program must be equivalent to your **argv[0]**
 
 ------------
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-#Compilation
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+
+# Compilation
 
 ------------
 
@@ -28,8 +23,9 @@ In this project we are tasked with creating our own simple **UNIX** command inte
     gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 
 ------------
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-#Testing
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+
+# Testing
 
 ------------
 &bull;  **Interactive** mode:
@@ -44,7 +40,7 @@ In this project we are tasked with creating our own simple **UNIX** command inte
 ------------
 
 &bull; **Non-interactive** mode:
-
+   
     $ echo "/bin/ls" | ./hsh
     hsh main.c shell.c test_ls_2
     $
@@ -58,11 +54,13 @@ In this project we are tasked with creating our own simple **UNIX** command inte
     $
 
 ------------
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-#Tasks
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+
+# Tasks
 
 ------------
-##README, man, AUTHORS:
+
+## README, man, AUTHORS
 
 ------------
 &bull;  Write a **README**
@@ -70,18 +68,20 @@ In this project we are tasked with creating our own simple **UNIX** command inte
 &bull; You should have an **AUTHORS** file at the root of your repository, listing all    individuals having contributed content to the repository. Format, see [Dockers](http://https://github.com/moby/moby/blob/master/AUTHORS "Dockers").
 
 ------------
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
 
-##Betty would be proud:
+
+## Betty would be proud
 
 ------------
 
 &bull; Write a beautiful code that passes the **Betty** checks
 
 ------------
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
 
-##Simple shell 0.1
+
+## Simple shell 0.1
 
 ------------
 &bull; Write a **UNIX** command line interpreter.
@@ -99,7 +99,7 @@ In this project we are tasked with creating our own simple **UNIX** command inte
 
 &bull; Handle errors.
 
-&bull; You have to handle the “end of file” condition (Ctrl+D)
+&bull; You have to handle the end of file condition (**Ctrl+D**)
 
 ------------
 &bull; You **don’t** have to:
@@ -109,7 +109,7 @@ In this project we are tasked with creating our own simple **UNIX** command inte
 
 &bull; Implement **built-ins**
 
-&bull; Handle **special characters **
+&bull; Handle **special characters** 
 
 &bull; Be able to **move the cursor**
 
@@ -117,7 +117,7 @@ In this project we are tasked with creating our own simple **UNIX** command inte
 
 ------------
 
-    julien@ubuntu:~/shell$ ./shell
+    julien@ubuntu:~/shell$ ./shell 
     #cisfun$ ls
     ./shell: No such file or directory
     #cisfun$ /bin/ls
@@ -138,15 +138,17 @@ In this project we are tasked with creating our own simple **UNIX** command inte
     #cisfun$ julien@ubuntu:~/shell$
 
 ------------
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-##Simple shell 0.2
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+
+## Simple shell 0.2 
 
 ------------
 &bull; Handle command lines **with arguments**
 
 ------------
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-##Simple shell 0.3
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+
+## Simple shell 0.3
 
 ------------
 
@@ -161,7 +163,7 @@ In this project we are tasked with creating our own simple **UNIX** command inte
     :) ls
     barbie_j       env-main.c  exec.c  fork.c  pid.c  ppid.c    prompt   prompt.c  shell_0.3  stat    test_scripting.sh  wait.c
     env-environ.c  exec    fork    mypid   ppid   printenv  promptc  shell     shell.c    stat.c  wait
-    :) ls -l /tmp
+    :) ls -l /tmp 
     total 20
     -rw------- 1 julien julien    0 Dec  5 12:09 config-err-aAMZrR
     drwx------ 3 root   root   4096 Dec  5 12:09 systemd-private-062a0eca7f2a44349733e78cb4abdff4-colord.service-V7DUzr
@@ -169,20 +171,24 @@ In this project we are tasked with creating our own simple **UNIX** command inte
     drwx------ 3 root   root   4096 Dec  5 12:07 systemd-private-062a0eca7f2a44349733e78cb4abdff4-systemd-timesyncd.service-CdXUtH
     -rw-rw-r-- 1 julien julien    0 Dec  5 12:09 unity_support_test.0
     :) ^C
-    julien@ubuntu:~/shell$
+    julien@ubuntu:~/shell$ 
 
 ------------
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-##Simple shell 0.4
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+
+## Simple shell 0.4
 
 ------------
 &bull; Implement the **exit built-in**, that exits the shell
+
 &bull; Usage: **exit**
+
 &bull; You **don’t** have to handle any argument to the built-in exit
 
 ------------
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-##Simple shell 1.0
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+
+## Simple shell 1.0
 
 ------------
 &bull;Implement the **env built-in**, that prints the current environment
@@ -204,19 +210,21 @@ In this project we are tasked with creating our own simple **UNIX** command inte
     PATH=/home/julien/bin:/home/julien/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
     DISPLAY=:0
     $ exit
-    julien@ubuntu:~/shell$
+    julien@ubuntu:~/shell$ 
 
 ------------
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-##What happens when you type ls -l in the shell
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+
+## What happens when you type ls -l in the shell
 
 ------------
 
 &bull; To see this article, click here : [ https://www.linkedin.com/pulse/what-happens-when-you-type-ls-l-shell-daniela-morales/?trackingId=MiuGDGZKR2WoDREhsVk16Q%3D%3D ]
 
 ------------
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-##Files
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+
+## Files
 
 ------------
 
@@ -226,8 +234,9 @@ In this project we are tasked with creating our own simple **UNIX** command inte
 |           |                 |
 
 ------------
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
-##Examples
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+
+## Examples
 
 ------------
 &bull; Handles "**ls**" command with or without arguments
@@ -242,7 +251,7 @@ $ ls -la
 -rw-rw-r--  1 daniela daniela  2369 abr 10 16:58 funciones2.c
 -rw-rw-r--  1 daniela daniela  2605 abr 11 18:15 funcionesaux.c
 -rw-rw-r--  1 daniela daniela  4017 abr 11 17:28 funciones.c
-$ ls -lu                           /etc
+$ ls -lu                           /etc   
 total 1304
 drwxr-xr-x  3 root root     4096 mar 21  2017 acpi
 -rw-r--r--  1 root root     3028 abr  9 02:29 adduser.conf
@@ -265,7 +274,7 @@ drwxr-xr-x  3 root root     4096 mar 21  2017 avahi
 
 ------------
 
-&bull; Handles "**which**" command
+&bull; Handles "**which**" command 
 
 ------------
 ```c
@@ -305,5 +314,63 @@ built_n.c  funciones2.c  funcionesaux.c  funciones.c  holberton.h  man_1_simple_
 ➜  simple-shell git:(daniela)
 
 ```
+
+------------
+&bull; Handle "**env**" command
+
+------------
+```c
+$ env
+LESSOPEN=| /usr/bin/lesspipe %s
+GNOME_KEYRING_PID=
+USER=daniela
+UNITY_HAS_3D_SUPPORT=true
+UNITY_DEFAULT_PROFILE=unity
+LANGUAGE=es_CO:es
+UPSTART_INSTANCE=
+XDG_SEAT=seat0
+SESSION=ubuntu
+XDG_SESSION_TYPE=x11
+COMPIZ_CONFIG_PROFILE=ubuntu
+SHLVL=10
+HOME=/home/daniela
+LESS=-R
+QT4_IM_MODULE=xim
+OLDPWD=/home/daniela
+DESKTOP_SESSION=ubuntu
+ZSH=/home/daniela/.oh-my-zsh
+LSCOLORS=Gxfxcxdxbxegedabagacad
+QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
+GTK_MODULES=gail:atk-bridge:unity-gtk-module
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+PAGER=less
+INSTANCE=
+DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-3ISfJ8kftR
+GNOME_KEYRING_CONTROL=
+QT_QPA_PLATFORMTHEME=appmenu-qt5
+MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
+IM_CONFIG_PHASE=1
+SESSIONTYPE=gnome-session
+UPSTART_JOB=unity7
+LOGNAME=daniela
+GTK_IM_MODULE=ibus
+WINDOWID=71303178
+_=/bin/sh
+DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+XDG_SESSION_ID=c2
+TERM=xterm-256color
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+GTK2_MODULES=overlay-scrollbar
+PATH=/home/daniela/bin:/home/daniela/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+$ 
+
+```
+------------
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+# AUTHORS
+------------
+**Daniela Morales**  | 1524@holbertonschool.com  
+
+**Jefferson Leon**   | 1527@holbertonschool.com 
 
 ------------

@@ -219,7 +219,7 @@ In this project we are tasked with creating our own simple **UNIX** command inte
 
 ------------
 
-&bull; To see this article, click here : [ https://www.linkedin.com/pulse/what-happens-when-you-type-ls-l-shell-daniela-morales/?trackingId=MiuGDGZKR2WoDREhsVk16Q%3D%3D ]
+&bull; To see this article, click here : [ https://www.linkedin.com/pulse/what-happens-when-you-type-ls-l-shell-daniela-morales ]
 
 ------------
 &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
@@ -249,7 +249,7 @@ This project has truly been one of the biggest challenges that we as a team have
 
 &bull; **cat =>** shows information about a file or directory
 
-&rarr; Here is a **test** :
+**&rarr;** Here is a **test** :
 
 ------------
 
@@ -320,7 +320,7 @@ $
 ```
 ------------
 
-&rarr; Here is a **test** :
+**&rarr;** Here is a **test** :
 
 ------------
 
@@ -353,7 +353,7 @@ built_n.c  funciones2.c  funcionesaux.c  funciones.c  holberton.h  man_1_simple_
 
 ```
 ------------
-&rarr; Here is a **test** :
+**&rarr;** Here is a **test** :
 
 ------------
 ![](https://i.ibb.co/gwGv5JS/Captura-de-pantalla-de-2020-04-13-12-53-24.png)
@@ -410,7 +410,7 @@ $
 
 ```
 ------------
-&rarr; Here is a **test** :
+**&rarr;** Here is a **test** :
  
 ------------
 

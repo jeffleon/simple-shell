@@ -352,8 +352,14 @@ built_n.c  funciones2.c  funcionesaux.c  funciones.c  holberton.h  man_1_simple_
 ➜  simple-shell git:(daniela)
 
 ```
+------------
+&rarr; Here is a **test** :
 
 ------------
+![](https://i.ibb.co/gwGv5JS/Captura-de-pantalla-de-2020-04-13-12-53-24.png)
+
+------------
+
 &bull; Handle "**env**" command
 
 ------------
@@ -416,8 +422,9 @@ $
 ## Note
 
 ------------
-&bull; And the most **fun is that from our own shell we can see what processes are running**, know what their respective child processes are and clearly their parent process and if they behave **linearly or exponentially! ...
-with the command (**ps -fe**)**.
+&bull; And the most **fun is that from our own shell we can see what processes are running**, know what their respective child processes are and clearly their parent process and if they behave **linearly or exponentially!** ...
+
+&bull; With the command (**ps -fe**).
 
 ------------
 ![](https://i.ibb.co/WvR9sMh/Captura-de-pantalla-de-2020-04-13-12-30-16.png)

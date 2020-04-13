@@ -37,7 +37,6 @@ int _which(char **source, char **environ, dir **test, long int *count_cmd)
         {
                 if ((stat(source[1], &st)) != -1)
                 {
-			printf("aca me meti \n");
                         for (i = 0; *(source [1] + i); i++)
 			{}
 			write(1, source[1], i);
@@ -75,7 +74,34 @@ int _cd(char **source, char **environ, dir **test, long int *count_cmd)
  */
 int _help(char **source, char **environ, dir **test, long int *count_cmd)
 {
-	printf("me meti help\n");
+	ssize_t fd, read_data = 0, write_data = 0;
+	char concatenar[6] = "help_";
+	char *archivo = '\0';
+	char buf[1024];
+        int i = 0, j = 0, total = 0;
+
+	if (source[1] == NULL)
+                return (1);
+	for (i = 0; *(source[1] + i); i++)
+	{}
+	i++;
+	total = i + 5;
+	archivo = malloc(sizeof(char) * (total));
+	for (j = 0; concatenar[j]; j++)
+		archivo[j] = concatenar[j];
+	for (j = 0; *(source[1] + j); j++)
+		archivo[5 + j] = *(source[1] + j);
+	archivo[5 + j] = '\0';
+	fd = open(archivo, O_RDONLY);
+	if (fd == -1)
+		return(0);
+	while ((read_data = read(fd, buf, 1024)) > 0)
+	{
+		write_data = write(STDOUT_FILENO, buf, read_data);
+	}
+	close(fd);
+	free(archivo);
+	return(1);
 }
 
 /**

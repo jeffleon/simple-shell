@@ -236,6 +236,38 @@ In this project we are tasked with creating our own simple **UNIX** command inte
 ------------
 &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
 
+## How do we get the shell out ...
+
+------------
+&bull; Creating our mini_shell
+
+This project has truly been one of the biggest challenges that we as a team have faced, our shell has several functionalities without counting on the most basic commands such as:
+
+&bull; **ls =>** lists the files in the current directory
+
+&bull; **pwd =>** show current working directory on screen
+
+&bull; **cat =>** shows information about a file or directory
+
+&rarr; Here is a **test ** :
+
+------------
+
+![]( https://i.ibb.co/ZTQbKvm/Captura-de-pantalla-de-2020-04-13-12-09-07.png)
+
+------------
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+
+&bull;Now our shell also handles **commands with arguments**, for example if we want to show or list our files in a long way in a certain directory, let's say the directory where the temporary files are saved, bone **/tmp**, this in our mini_shell would **look like this:**
+
+------------
+
+![](https://i.ibb.co/9Hrstrg/Captura-de-pantalla-de-2020-04-13-11-47-56.png)
+
+------------
+
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+
 ## Examples
 
 ------------

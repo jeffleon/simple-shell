@@ -233,7 +233,11 @@ In this project we are tasked with creating our own simple **UNIX** command inte
 | **holberton.h** | In this file we have all the **libraries** we need to be able to use certain functions or system calls, 			we also use **structures**, **macros** this is what our header contains |
 |**.gitignore** | In this file we find all the junk files or that we simply do not need for our project, we consider it a 		    good practice to be able to evolve in the working world |
 | **minishell.c** | In this file that is the main one compared to the other files we find, the getline that is in charge of                     taking and reading the characters of each line until it discovers a line break, there are also the 	                     different function calls that are in different files and they clearly play different roles |
-|           |           |
+| **built_n.c**  | In this file we have the different **built-in** that our shell handles such as: *help, which, cd and env* 			that makes our shell more dynamic and functional! |
+|**funciones.c** | In this file, we find different functions such as: those that are responsible for freeing memory to 		           handle basic errors, we also divide the character strings typed by the user from our shell through the                      function **strtok()**, which divides by spaces and finally we also do the execution of the different 			   processes children bone the commands |
+| **funciones2.c** | In this file we check the character string that will come to us from the user and concatenate, we also 			take the main environment variable called PATH, it contains the different addresses of the commands that 		     our user will use and we divide it by tokens, we also clearly look for the word PATH inside the list 		      of environment variables and all this happens at the moment we enter any command or program that 		            is in our shell and we also enter with the help of this variable |
+
+|           |         |
 
 ------------
 &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;

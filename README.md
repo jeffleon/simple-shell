@@ -230,8 +230,10 @@ In this project we are tasked with creating our own simple **UNIX** command inte
 
 | **FILES**  | **DESCRIPTION**   |
 | ------------ | ------------ |
-| **holberton.h** | In this file we have all the **libraries** we need to be able to use certain functions or system calls, 			we also use **structures**,**macros** this is what our header contains |
-|           |                 |
+| **holberton.h** | In this file we have all the **libraries** we need to be able to use certain functions or system calls, 			we also use **structures**, **macros** this is what our header contains |
+|**.gitignore** | In this file we find all the junk files or that we simply do not need for our project, we consider it a 		    good practice to be able to evolve in the working world |
+| **minishell.c** | In this file that is the main one compared to the other files we find, the getline that is in charge of                     taking and reading the characters of each line until it discovers a line break, there are also the 	                     different function calls that are in different files and they clearly play different roles |
+|           |           |
 
 ------------
 &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;

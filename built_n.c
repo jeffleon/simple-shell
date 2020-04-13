@@ -11,39 +11,39 @@ int _which(char **source, char **environ, dir **test, long int *count_cmd)
 	dir *copia = *test;
 	char **verificar;
 
-	for (count_list = 0; copia;copia = copia->next, count_list++)
+	for (count_list = 0; copia; copia = copia->next, count_list++)
 	{
 	}
 	count_list++;
 	if (source[1] == NULL)
-		return(1);
-        if (*source[1] != '/' && *source[1] != 46)
-        {
-		verificar = _verification(test,source[1], &count_list);
+		return (1);
+	if (*source[1] != '/' && *source[1] != 46)
+	{
+		verificar = _verification(test, source[1], &count_list);
 		for (j = 0; verificar[j]; j++)
-                {
-                        if (stat(verificar[j], &st) != -1)
+		{
+			if (stat(verificar[j], &st) != -1)
 			{
 				for (i = 0; *(verificar[j] + i); i++)
 				{}
 				write(1, verificar[j], i);
 				write(1, "\n", 1);
 				break;
-                        }
+			}
 		}
 		free_function(verificar, &count_list);
-        }
-        else
-        {
-                if ((stat(source[1], &st)) != -1)
-                {
-                        for (i = 0; *(source [1] + i); i++)
+	}
+	else
+	{
+		if ((stat(source[1], &st)) != -1)
+		{
+			for (i = 0; *(source[1] + i); i++)
 			{}
 			write(1, source[1], i);
 			write(1, "\n", 1);
-                }
+		}
 	}
-	return(1);
+	return (1);
 }
 /**
  * _cd - function that show the command cd in shell
@@ -79,10 +79,10 @@ int _help(char **source, char **environ, dir **test, long int *count_cmd)
 	char concatenar[6] = "help_";
 	char *archivo = '\0';
 	char buf[1024];
-        int i = 0, j = 0, total = 0;
+	int i = 0, j = 0, total = 0;
 
 	if (source[1] == NULL)
-                return (1);
+		return (1);
 	for (i = 0; *(source[1] + i); i++)
 	{}
 	i++;
@@ -95,14 +95,14 @@ int _help(char **source, char **environ, dir **test, long int *count_cmd)
 	archivo[5 + j] = '\0';
 	fd = open(archivo, O_RDONLY);
 	if (fd == -1)
-		return(0);
+		return (0);
 	while ((read_data = read(fd, buf, 1024)) > 0)
 	{
 		write_data = write(STDOUT_FILENO, buf, read_data);
 	}
 	close(fd);
 	free(archivo);
-	return(1);
+	return (1);
 }
 
 /**
@@ -119,10 +119,10 @@ int _env(char **source, char **environ, dir **test, long int *count_cmd)
 		return (1);
 	for (i = 0; env[i] != NULL; i++)
 	{
-		for(j = 0; *(env[i] + j); j++)
+		for (j = 0; *(env[i] + j); j++)
 		{}
 		write(1, env[i], j);
-		write(1, "\n",1);
+		write(1, "\n", 1);
 	}
 	return (1);
 }
@@ -151,5 +151,5 @@ char *_union(long int *count_cmd, int *sizenum)
 	total[4 + *sizenum + i] = '\0';
 	printf("mensaje : [%s]\n", total);
 	free(num);
-	return(total);
+	return (total);
 }

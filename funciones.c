@@ -110,26 +110,7 @@ void execute_v(char **ln_cmd, long int *count_cmd,
 		}
 	}
 	wait(NULL);
-	if (a == 0)
-	{
-		if (*words > 2)
-		{
-			for (i = 1; source[i]; i++)
-			{
-				if (*source[i] == '/' || *source[i] == '.')
-				{
-					word_to_send = source[i];
-					break;
-				}
-				else
-					word_to_send = cadena;
-			}
-		}
-		else
-			word_to_send = cadena;
-		errores(source[0], word_to_send, count_cmd);
-
-	}
+	aux_errores(a, words, source, count_cmd);
 }
 /**
  * print_integers - function that create a child
@@ -182,45 +163,22 @@ void errores(char *split_arg0, char *split_arg2, long int *count_cmd)
 	{}
 	for (i = 0; split_arg2[i] != '\0'; i++)
 	{}
-	valor_total = (i + j + w + 17);
+	valor_total = (i + j + w + 16);
 	msg_error = malloc(sizeof(char) * (valor_total));
 	if (msg_error == '\0')
 		return;
-	for (z = 0; z < valor_total; z++, countarg++)
-	{
-		if (z < i)
-			msg_error[z] = split_arg2[countarg];
-		else if (z < (i + 2))
-		{
-			if (z == i)
-				countarg = 0;
-			msg_error[z] = add[countarg];
-		}
-		else if (z < (i + w + 2))
-		{
-			if (z == (i + 2))
-				countarg = 0;
-			msg_error[z] = p[countarg];
-		}
-		else if (z < (i + w + 4))
-		{
-			if (z == (i + w + 2))
-				countarg = 0;
-			msg_error[z] = add[countarg];
-		}
-		else if (z < (i + w + j + 4))
-		{
-			if (z == (i + w + 4))
-				countarg = 0;
-			msg_error[z] = split_arg0[countarg];
-		}
-		else
-		{
-			if (z == (i + w + j + 4))
-				countarg = 0;
-			msg_error[z]  = msg[countarg];
-		}
-	}
+	for (z = 0; z < i; z++)
+		msg_error[z] = split_arg2[z];
+	for (z = 0; z < 2; z++)
+		msg_error[z + i] = add[z];
+	for (z = 0; z < w; z++)
+		msg_error[z + i + 2] = p[z];
+	for (z = 0; z < 2; z++)
+		msg_error[z + i + 2 + w] = add[z];
+	for (z = 0; z < j; z++)
+		msg_error[z + i + 2 + w + 2] = split_arg0[z];
+	for (z = 0; z < 12; z++)
+		msg_error[z + i + 4 + w + j]  = msg[z];
 	write(1, msg_error, valor_total);
 	free(msg_error);
 	free(p);

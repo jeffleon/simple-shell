@@ -18,8 +18,8 @@
  */
 typedef struct nodo
 {
-        char *direccion;
-        struct nodo *next;
+	char *direccion;
+	struct nodo *next;
 } dir;
 
 
@@ -61,5 +61,8 @@ int _selection(char **source, char **environ, dir **test, long int *count_cmd);
 int _salir_(char *line, char *word_wsp, char **split_2, int *countfree
 	    , dir *head);
 int _env(char **source, char **environ, dir **test, long int *count_cmd);
+void aux_errores(int a, int *words, char **source, long int *count_cmd);
+
+
 
 #endif

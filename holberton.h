@@ -26,7 +26,7 @@ typedef struct nodo
 /**
  * struct built - struct
  * @comandokey:select the function
- * @func:....
+ * @func: a pointer to function
  */
 typedef struct built
 {

@@ -70,6 +70,7 @@ int _cd(char **source, char **environ, dir **test, long int *count_cmd)
 /**
  * _help - function that show the command help in shell
  * @source: doble pointer
+ * @environ: this is the 
  * Return: nothing
  */
 int _help(char **source, char **environ, dir **test, long int *count_cmd)

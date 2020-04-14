@@ -95,6 +95,8 @@ int _help(char **source, char **environ, dir **test, long int *count_cmd)
 	i++;
 	total = i + 5;
 	archivo = malloc(sizeof(char) * (total));
+	if (archivo == '\0')
+		return (0);
 	for (j = 0; concatenar[j]; j++)
 		archivo[j] = concatenar[j];
 	for (j = 0; *(source[1] + j); j++)
@@ -152,6 +154,8 @@ char *_union(long int *count_cmd, int *sizenum)
 
 	num = print_integers(count_cmd, sizenum);
 	total = malloc(sizeof(char) * (9 + *sizenum));
+	if (total == '\0')
+		return ('\0');
 	for (i = 0; inicio[i]; i++)
 		total[i] = inicio[i];
 	for (i = 0; i < *sizenum; i++)

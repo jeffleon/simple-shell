@@ -55,5 +55,6 @@ int main(void)
 	}
 	if (linesize < 2)
 		write(1, "\n", 1);
-	free_list(head), free(line), return (0);
+	free_list(head), free(line);
+	return (0);
 }

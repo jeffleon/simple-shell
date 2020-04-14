@@ -11,7 +11,6 @@ int _salir_(char *line, char *word_wsp, char **split_2, int *countfree,
 
 	if ((_strcmp(split_2[0], pointer) == 0))
 	{
-		printf("entre al if  y me sali\n");
 		free_list(head);
 		free(line);
 		free_function(split_2, countfree);

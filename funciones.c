@@ -130,6 +130,8 @@ char *print_integers(long int *j, int *r)
 	}
 	retorno = i;
 	p = malloc(sizeof(char) * (i + 1));
+	if (p == '\0')
+		return ('\0');
 	while (*j / 10 > 0)
 	{
 		p[i] = *j % 10 + '0';

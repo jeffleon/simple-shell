@@ -18,6 +18,7 @@ int _salir_(char *line, char *word_wsp, char **split_2, int *countfree,
 		free(word_wsp);
 		exit(127);
 	}
+	return (0);
 }
 /**
  *  _exit_ - function that show the command exit in shell

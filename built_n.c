@@ -11,6 +11,8 @@ int _which(char **source, char **environ, dir **test, long int *count_cmd)
 	dir *copia = *test;
 	char **verificar;
 
+	(void)environ;
+	(void)count_cmd;
 	for (count_list = 0; copia; copia = copia->next, count_list++)
 	{
 	}
@@ -56,6 +58,8 @@ int _cd(char **source, char **environ, dir **test, long int *count_cmd)
 	char *msg = NULL;
 	int sizenum = 0;
 
+	(void)environ;
+	(void)test;
 	getcwd(s, 100);
 	if (source[1] == NULL)
 		return (1);
@@ -75,12 +79,15 @@ int _cd(char **source, char **environ, dir **test, long int *count_cmd)
  */
 int _help(char **source, char **environ, dir **test, long int *count_cmd)
 {
-	ssize_t fd, read_data = 0, write_data = 0;
+	ssize_t fd, read_data = 0;
 	char concatenar[6] = "help_";
 	char *archivo = '\0';
 	char buf[1024];
 	int i = 0, j = 0, total = 0;
 
+	(void)environ;
+	(void)test;
+	(void)count_cmd;
 	if (source[1] == NULL)
 		return (1);
 	for (i = 0; *(source[1] + i); i++)
@@ -98,7 +105,7 @@ int _help(char **source, char **environ, dir **test, long int *count_cmd)
 		return (0);
 	while ((read_data = read(fd, buf, 1024)) > 0)
 	{
-		write_data = write(STDOUT_FILENO, buf, read_data);
+		write(STDOUT_FILENO, buf, read_data);
 	}
 	close(fd);
 	free(archivo);
@@ -115,6 +122,9 @@ int _env(char **source, char **environ, dir **test, long int *count_cmd)
 	int i = 0, j = 0;
 	char **env = (char **)environ[0];
 
+	(void)source;
+	(void)test;
+	(void)count_cmd;
 	if (environ == NULL)
 		return (1);
 	for (i = 0; env[i] != NULL; i++)

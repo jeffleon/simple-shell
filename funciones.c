@@ -81,9 +81,7 @@ void execute_v(char **ln_cmd, long int *count_cmd,
 	       int *words, char **source, char **environ)
 {
 	struct stat st;
-	char *word_to_send = '\0';
-	char cadena[] = "sh";
-	int j = 0, a = 0, i = 0;
+	int j = 0, a = 0;
 
 	if (*source[0] != '/' && *source[0] != 46)
 	{
@@ -154,7 +152,7 @@ char *print_integers(long int *j, int *r)
 
 void errores(char *split_arg0, char *split_arg2, long int *count_cmd)
 {
-	int i, j, w = 0, z = 0, countarg = 0, valor_total = 0;
+	int i, j, w = 0, z = 0, valor_total = 0;
 	char *msg_error = '\0', msg[] = ": not found\n", add[] = ": ";
 	char *p = '\0';
 

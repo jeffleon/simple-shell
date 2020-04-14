@@ -35,7 +35,7 @@ typedef struct built
 		    , long int *count_cmd);
 } built_in;
 
-
+extern char *environ[];
 char **split_word(char *cadena, int *countfree);
 void free_function(char **from, int *countfree);
 void execute_v(char **ln_cmd, long int *count_cmd

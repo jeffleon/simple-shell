@@ -1,18 +1,18 @@
 #include "holberton.h"
 /**
  * sighandler - main function
- * @signum:integer
- * Return: zero por
+ * @sighandler:integer
+ * Return: void
  */
-void sighandler(int signum)
+void sighandler(int sighandler)
 {
+	(void)sighandler;
 	write(1, "\n$ ", 3);
 }
 /**
  * main - main function
  * Return: zero
  */
-extern char *environ[];
 int main(void)
 {
 	dir *head = NULL;
@@ -30,7 +30,6 @@ int main(void)
 		if ((isatty(0)))
 			write(1, "$ ", 2);
 		linesize = getline(&line, &len, stdin);
-		//printf("el line size es : [%zu] \n", linesize);
 		if (linesize > 1)
 			line[linesize - 1] = '\0';
 		else
@@ -42,7 +41,6 @@ int main(void)
 			free(word_wsp);
 			continue;
 		}
-		//printf("el resultado es [%s]\n", word_wsp);
 		split_2 = split_word(word_wsp, &countfree);
 		_salir_(line, word_wsp, split_2, &countfree, head);
 		built_in_ent = _selection(split_2, environ, &head, &count_cmd);
@@ -56,5 +54,5 @@ int main(void)
 	}
 	if (linesize < 2)
 		write(1, "\n", 1);
-	free_list(head), free(line);
+	return (free_list(head), free(line), 0);
 }

@@ -31,7 +31,6 @@ char *_strdup(char *str)
 	i++;
 
 	s = malloc(i * sizeof(char));
-
 	if (s == NULL)
 		return (NULL);
 	for (j = 0; j < i; j++)
@@ -102,8 +101,11 @@ char *delete_spaces(char *elm_spc, int *count_words)
 }
 /**
  * _selection - function that take over of to select any function
+ * @environ:list of vars
+ * @test:path
+ * @count_cmd:counter commands
  * @source: doble pointer
- * Return: Always 0.
+ * Return:rt
  */
 int _selection(char **source, char **environ, dir **test, long int *count_cmd)
 {

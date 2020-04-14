@@ -76,14 +76,14 @@ void free_function(char **from, int *countfree)
  * @count_cmd: count
  * @words: string
  * @source:quantity of words that had a split_word
+ * @environ:list of vars
+ * Return:empty
  */
 void execute_v(char **ln_cmd, long int *count_cmd,
 	       int *words, char **source, char **environ)
 {
 	struct stat st;
-	char *word_to_send = '\0';
-	char cadena[] = "sh";
-	int j = 0, a = 0, i = 0;
+	int j = 0, a = 0;
 
 	if (*source[0] != '/' && *source[0] != 46)
 	{
@@ -110,26 +110,7 @@ void execute_v(char **ln_cmd, long int *count_cmd,
 		}
 	}
 	wait(NULL);
-	if (a == 0)
-	{
-		if (*words > 2)
-		{
-			for (i = 1; source[i]; i++)
-			{
-				if (*source[i] == '/' || *source[i] == '.')
-				{
-					word_to_send = source[i];
-					break;
-				}
-				else
-					word_to_send = cadena;
-			}
-		}
-		else
-			word_to_send = cadena;
-		errores(source[0], word_to_send, count_cmd);
-
-	}
+	aux_errores(a, words, source, count_cmd);
 }
 /**
  * print_integers - function that create a child
@@ -151,6 +132,8 @@ char *print_integers(long int *j, int *r)
 	}
 	retorno = i;
 	p = malloc(sizeof(char) * (i + 1));
+	if (p == '\0')
+		return ('\0');
 	while (*j / 10 > 0)
 	{
 		p[i] = *j % 10 + '0';
@@ -173,7 +156,7 @@ char *print_integers(long int *j, int *r)
 
 void errores(char *split_arg0, char *split_arg2, long int *count_cmd)
 {
-	int i, j, w = 0, z = 0, countarg = 0, valor_total = 0;
+	int i, j, w = 0, z = 0, valor_total = 0;
 	char *msg_error = '\0', msg[] = ": not found\n", add[] = ": ";
 	char *p = '\0';
 
@@ -182,45 +165,22 @@ void errores(char *split_arg0, char *split_arg2, long int *count_cmd)
 	{}
 	for (i = 0; split_arg2[i] != '\0'; i++)
 	{}
-	valor_total = (i + j + w + 17);
+	valor_total = (i + j + w + 16);
 	msg_error = malloc(sizeof(char) * (valor_total));
 	if (msg_error == '\0')
 		return;
-	for (z = 0; z < valor_total; z++, countarg++)
-	{
-		if (z < i)
-			msg_error[z] = split_arg2[countarg];
-		else if (z < (i + 2))
-		{
-			if (z == i)
-				countarg = 0;
-			msg_error[z] = add[countarg];
-		}
-		else if (z < (i + w + 2))
-		{
-			if (z == (i + 2))
-				countarg = 0;
-			msg_error[z] = p[countarg];
-		}
-		else if (z < (i + w + 4))
-		{
-			if (z == (i + w + 2))
-				countarg = 0;
-			msg_error[z] = add[countarg];
-		}
-		else if (z < (i + w + j + 4))
-		{
-			if (z == (i + w + 4))
-				countarg = 0;
-			msg_error[z] = split_arg0[countarg];
-		}
-		else
-		{
-			if (z == (i + w + j + 4))
-				countarg = 0;
-			msg_error[z]  = msg[countarg];
-		}
-	}
+	for (z = 0; z < i; z++)
+		msg_error[z] = split_arg2[z];
+	for (z = 0; z < 2; z++)
+		msg_error[z + i] = add[z];
+	for (z = 0; z < w; z++)
+		msg_error[z + i + 2] = p[z];
+	for (z = 0; z < 2; z++)
+		msg_error[z + i + 2 + w] = add[z];
+	for (z = 0; z < j; z++)
+		msg_error[z + i + 2 + w + 2] = split_arg0[z];
+	for (z = 0; z < 12; z++)
+		msg_error[z + i + 4 + w + j]  = msg[z];
 	write(1, msg_error, valor_total);
 	free(msg_error);
 	free(p);

@@ -18,8 +18,8 @@
  */
 typedef struct nodo
 {
-        char *direccion;
-        struct nodo *next;
+	char *direccion;
+	struct nodo *next;
 } dir;
 
 
@@ -35,7 +35,7 @@ typedef struct built
 		    , long int *count_cmd);
 } built_in;
 
-
+extern char *environ[];
 char **split_word(char *cadena, int *countfree);
 void free_function(char **from, int *countfree);
 void execute_v(char **ln_cmd, long int *count_cmd
@@ -61,5 +61,8 @@ int _selection(char **source, char **environ, dir **test, long int *count_cmd);
 int _salir_(char *line, char *word_wsp, char **split_2, int *countfree
 	    , dir *head);
 int _env(char **source, char **environ, dir **test, long int *count_cmd);
+void aux_errores(int a, int *words, char **source, long int *count_cmd);
+
+
 
 #endif

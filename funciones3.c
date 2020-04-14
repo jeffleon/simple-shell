@@ -1,11 +1,15 @@
 #include "holberton.h"
 /**
- *  _exit_ - function that show the command exit in shell
- * @source: doble pointer
- * Return: nothing
+ *  _salir_ - function that show the command exit in shell
+ * @line: string
+ * @word_wsp: spaces
+ * @split_2: contain the tokens
+ * @countfree: words
+ * @head: pointer to struct
+ * Return: zero
  */
 int _salir_(char *line, char *word_wsp, char **split_2, int *countfree,
-	    dir *head)
+	 dir *head)
 {
 	char *pointer = "exit";
 
@@ -20,7 +24,10 @@ int _salir_(char *line, char *word_wsp, char **split_2, int *countfree,
 	return (0);
 }
 /**
- *  _exit_ - function that show the command exit in shell
+ * aux_errores - function that show the errors in shell
+ * @words: counter to words
+ * @a:counter
+ * @count_cmd:counter commands
  * @source: doble pointer
  * Return: nothing
  */

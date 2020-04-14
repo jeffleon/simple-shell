@@ -2,7 +2,10 @@
 /**
  * _which - function that show the command which in shell
  * @source: doble pointer
- * Return: nothing
+ * @environ:list of vars
+ * @test:path
+ * @count_cmd:count of commands
+ * Return: 1 in case of successful
  */
 int _which(char **source, char **environ, dir **test, long int *count_cmd)
 {
@@ -50,7 +53,10 @@ int _which(char **source, char **environ, dir **test, long int *count_cmd)
 /**
  * _cd - function that show the command cd in shell
  * @source: doble pointer
- * Return: nothing
+ * @environ:list of vars
+ * @test:path
+ * @count_cmd:count of commands
+ * Return: 1 in case of successful
  */
 int _cd(char **source, char **environ, dir **test, long int *count_cmd)
 {
@@ -75,7 +81,9 @@ int _cd(char **source, char **environ, dir **test, long int *count_cmd)
  * _help - function that show the command help in shell
  * @source: doble pointer
  * @environ: this is the
- * Return: nothing
+ * @test:path
+ * @count_cmd:count of commands
+ * Return: 1 in case of successful
  */
 int _help(char **source, char **environ, dir **test, long int *count_cmd)
 {
@@ -113,11 +121,13 @@ int _help(char **source, char **environ, dir **test, long int *count_cmd)
 	free(archivo);
 	return (1);
 }
-
 /**
- *  _env - function that show the command exit in shell
+ * _env - function that show the command env in shell
  * @source: doble pointer
- * Return: nothing
+ * @environ: this is the
+ * @test:path
+ * @count_cmd:count of commands
+ * Return: 1 in case of successful
  */
 int _env(char **source, char **environ, dir **test, long int *count_cmd)
 {
@@ -138,11 +148,11 @@ int _env(char **source, char **environ, dir **test, long int *count_cmd)
 	}
 	return (1);
 }
-
 /**
- *  _union - function that show the command exit in shell
- * @source: doble pointer
- * Return: nothing
+ * _union - function that show the command union in shell
+ * @sizenum: sizeof
+ * @count_cmd:count of commands
+ * Return: total
  */
 char *_union(long int *count_cmd, int *sizenum)
 {

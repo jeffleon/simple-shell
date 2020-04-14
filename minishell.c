@@ -1,8 +1,8 @@
 #include "holberton.h"
 /**
  * sighandler - main function
- * @signum:integer
- * Return: zero por
+ * @sighandler:integer
+ * Return: void
  */
 void sighandler(int sighandler)
 {
@@ -16,6 +16,7 @@ void sighandler(int sighandler)
 
 int main(void)
 {
+
 	dir *head = NULL;
 	size_t len = 0;
 	ssize_t linesize = 0;

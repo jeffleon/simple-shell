@@ -76,6 +76,8 @@ void free_function(char **from, int *countfree)
  * @count_cmd: count
  * @words: string
  * @source:quantity of words that had a split_word
+ * @environ:list of vars
+ * Return:empty
  */
 void execute_v(char **ln_cmd, long int *count_cmd,
 	       int *words, char **source, char **environ)

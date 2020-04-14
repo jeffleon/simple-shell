@@ -13,10 +13,8 @@ void sighandler(int sighandler)
  * main - main function
  * Return: zero
  */
-
 int main(void)
 {
-
 	dir *head = NULL;
 	size_t len = 0;
 	ssize_t linesize = 0;
@@ -56,6 +54,5 @@ int main(void)
 	}
 	if (linesize < 2)
 		write(1, "\n", 1);
-	free_list(head), free(line);
-	return (0);
+	return (free_list(head), free(line), 0);
 }

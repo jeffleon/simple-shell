@@ -80,10 +80,11 @@ void free_function(char **from, int *countfree)
  * Return:empty
  */
 void execute_v(char **ln_cmd, long int *count_cmd,
-	       int *words, char **source, char **environ)
+	       int *words, char **source, char **environ, int isa)
 {
 	struct stat st;
 	int j = 0, a = 0;
+	(void)isa;
 
 	if (*source[0] != '/' && *source[0] != 46)
 	{

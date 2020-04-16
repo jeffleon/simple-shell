@@ -10,8 +10,8 @@ void sighandler(int sighandler)
 	write(STDOUT_FILENO, "\n$ ", 3);
 }
 /**
- * main - main function
- * Return: zero
+ * main - main function mi
+ * Return: zero mo
  */
 int main(void)
 {

@@ -3,7 +3,7 @@
  * errores - function that split a string
  * @split_arg0: string to strtok and other
  * @count_cmd: count
- * @split_arg2: count
+ * @split_arg2:  count
  * @error: error
  */
 void errores(char *split_arg0, char *split_arg2, long int *count_cmd
@@ -12,7 +12,7 @@ void errores(char *split_arg0, char *split_arg2, long int *count_cmd
 /**
  * split_word - function that create a child
  * @cadena: line of comands
- * @countfree: count
+ * @countfree: count lska
  * Return: pointer char
  */
 

@@ -93,7 +93,7 @@ int execute_v(char **ln_cmd, long int *count_cmd,
 	wait(&status);
 	status = WEXITSTATUS(status);
 	aux_errores(a, words, source, count_cmd, error);
-	if (status == 2)
+	if (status == 2 || (_strcmp(source[0], "exit") == 0))
 		error = 2;
 	return (error);
 }
@@ -154,7 +154,7 @@ void errores(char *split_arg0, char *split_arg2, long int *count_cmd,
 	{}
 	for (h = 0; *(msg[error - 126] + h) != '\0'; h++)
 	{}
-	valor_total = (i + j + w + h + 5);
+	valor_total = (i + j + w + h + 4);
 	msg_error = malloc(sizeof(char) * (valor_total));
 	if (msg_error == '\0')
 		return;

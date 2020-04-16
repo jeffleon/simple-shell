@@ -14,7 +14,7 @@ int _salir_(char *line, char *word_wsp, char **split_2, int *countfree,
 {
 	char *pointer = "exit";
 
-	if ((_strcmp(split_2[0], pointer) == 0))
+	if ((_strcmp(split_2[0], pointer) == 0) && split_2[1] == NULL)
 	{
 		free_list(head);
 		free(line);
@@ -43,25 +43,31 @@ void aux_errores(int a, int *words, char **source, long int *count_cmd
 
 	if (a == 0)
 	{
-		if (*words > 2)
+		if ((_strcmp(source[0], "exit") != 0))
 		{
-			for (i = 1; source[i]; i++)
+			if (*words > 2)
 			{
-				if (*source[i] == '/' || *source[i] == '.')
+				for (i = 1; source[i]; i++)
 				{
-					word_to_send = source[i];
-					break;
+					if (*source[i] == '/' ||
+					    *source[i] == '.')
+					{
+						word_to_send = source[i];
+						break;
+					}
+					else
+						word_to_send = cadena;
 				}
-				else
-					word_to_send = cadena;
 			}
+			else
+				word_to_send = cadena;
+			errores(source[0], word_to_send, count_cmd, error);
 		}
 		else
-			word_to_send = cadena;
-		errores(source[0], word_to_send, count_cmd, error);
+			err_exit(source[0], source[1], count_cmd);
+
 	}
 }
-
 /**
  * aux_execute - function that show the errors in shell
  * @ln_cmd: counter to words
@@ -114,4 +120,47 @@ int aux_execute(char **ln_cmd, char **source, char **environ, int *a, int *i)
 	else if (error_denied == -1)
 		error = 126;
 	return (error);
+}
+
+
+
+/**
+ * err_exit - function that create a child
+ * @split_arg0: argument
+ * @split_arg2: argument
+ * @count_cmd: argument
+ */
+
+void err_exit(char *split_arg0, char *split_arg2, long int *count_cmd)
+{
+	int i, j, w = 0, z = 0, valor_total = 0, h = 0;
+	char *msg_error = '\0', add[] = "sh: ";
+	char msg[] = ": exit: Illegal number: ";
+	char salto[] = "\n";
+	char *p = '\0';
+
+	p = print_integers(count_cmd, &w);
+	for (j = 0; split_arg0[j] != '\0'; j++)
+	{}
+	for (i = 0; split_arg2[i] != '\0'; i++)
+	{}
+	for (h = 0; msg[h] != '\0'; h++)
+	{}
+	valor_total = (i + w + h + 5);
+	msg_error = malloc(sizeof(char) * (valor_total));
+	if (msg_error == '\0')
+		return;
+	for (z = 0; z < 4; z++)
+		msg_error[z] = add[z];
+	for (z = 0; z < w; z++)
+		msg_error[z + 4] = p[z];
+	for (z = 0; z < h; z++)
+		msg_error[z + 4 + w] = msg[z];
+	for (z = 0; z < i; z++)
+		msg_error[z + 4 + w + h] = split_arg2[z];
+	for (z = 0; z < 1; z++)
+		msg_error[z + 4 + w + h + i] = salto[z];
+	write(STDERR_FILENO, msg_error, valor_total);
+	free(msg_error);
+	free(p);
 }

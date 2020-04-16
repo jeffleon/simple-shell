@@ -67,5 +67,6 @@ void aux_errores(int a, int *words, char **source, long int *count_cmd
 		 , int error);
 
 int aux_execute(char **ln_cmd, char **source, char **environ, int *a, int *i);
+void err_exit(char *split_arg0, char *split_arg2, long int *count_cmd);
 
 #endif

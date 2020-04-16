@@ -137,21 +137,18 @@ int _env(char **source, char **environ, dir **test, long int *count_cmd)
 	(void)test;
 	(void)count_cmd;
 
+	if (environ == NULL || *environ == NULL)
+	{
+		write(1, "not found enviromental variable", 31);
+		return (1);
+	}
 	for (i = 0; environ[i] != NULL; i++)
 	{
-		if (environ == NULL)
-		{
-			write(STDOUT_FILENO, "nil", 4);
-			write(STDOUT_FILENO, "\n", 2);
-		}
-		else
-		{
-			env = environ[i];
-			for (j = 0; env[j]; j++)
-			{}
-			write(STDOUT_FILENO, env, j);
-			write(STDOUT_FILENO, "\n", 2);
-		}
+		env = environ[i];
+		for (j = 0; env[j]; j++)
+		{}
+		write(STDOUT_FILENO, env, j);
+		write(STDOUT_FILENO, "\n", 2);
 	}
 	return (1);
 }

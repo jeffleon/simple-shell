@@ -7,7 +7,7 @@
 void sighandler(int sighandler)
 {
 	(void)sighandler;
-	write(1, "\n$ ", 3);
+	write(STDOUT_FILENO, "\n$ ", 3);
 }
 /**
  * main - main function
@@ -52,7 +52,7 @@ int main(void)
 		free_function(split_2, &countfree);
 	}
 	if (isa)
-		write(1, "\n", 2);
+		write(STDOUT_FILENO, "\n", 2);
 	free(line), free(_path);
 	return (free_list(head), error);
 }

@@ -42,7 +42,7 @@ int main(void)
 			continue;
 		}
 		split_2 = split_word(word_wsp, &countfree);
-		_salir_(line, word_wsp, split_2, &countfree, head, error);
+		_salir_(line, word_wsp, split_2, &countfree, head, error, _path);
 		built_in_ent = _selection(split_2, environ, &head, &count_cmd);
 		test = _verification(&head, split_2[0], &count_list);
 		if (built_in_ent == 0)

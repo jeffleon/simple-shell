@@ -35,13 +35,15 @@ typedef struct built
 		    , long int *count_cmd);
 } built_in;
 
-extern char *environ[];
+extern char **environ;
+struct stat st;
 char **split_word(char *cadena, int *countfree);
 void free_function(char **from, int *countfree);
-void execute_v(char **ln_cmd, long int *count_cmd,
-	       int *words, char **source, char **environ, int isa);
+int execute_v(char **ln_cmd, long int *count_cmd,
+	       int *words, char **source, char **environ);
 char *print_integers(long int *j, int *retorno);
-void errores(char *split_arg0, char *split_arg2, long int *count_cmd);
+void errores(char *split_arg0, char *split_arg2, long int *count_cmd
+	     , int error);
 char *_concat(char *direccion, char *comand);
 char **_verification(dir **head, char *source, int *pointer);
 dir *split_path(char *path, int *count_list);
@@ -59,10 +61,11 @@ int _which(char **source, char **environ, dir **test, long int *count_cmd);
 int _help(char **source, char **environ, dir **test, long int *count_cmd);
 int _selection(char **source, char **environ, dir **test, long int *count_cmd);
 int _salir_(char *line, char *word_wsp, char **split_2, int *countfree
-	    , dir *head);
+	    , dir *head, int error);
 int _env(char **source, char **environ, dir **test, long int *count_cmd);
-void aux_errores(int a, int *words, char **source, long int *count_cmd);
+void aux_errores(int a, int *words, char **source, long int *count_cmd
+		 , int error);
 
-
+int aux_execute(char **ln_cmd, char **source, char **environ, int *a, int *i);
 
 #endif

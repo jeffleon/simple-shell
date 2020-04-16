@@ -71,8 +71,8 @@ char *delete_spaces(char *elm_spc, int *count_words)
 	{
 		if (((elm_spc[i] != ' ' && elm_spc[i] != '\t') || count > 1) &&
 		    ((elm_spc[i] != ' ' && elm_spc[i] != '\t') ||
-		     (elm_spc[i + 1] != ' ' && elm_spc[i + 1] != '\t'
-		      && elm_spc[i + 1] != '\0')))
+		     (elm_spc[i + 1] != ' ' && elm_spc[i + 1] != '\t' &&
+		      elm_spc[i + 1] != '\0')))
 			count++;
 	}
 	count++;
@@ -84,8 +84,8 @@ char *delete_spaces(char *elm_spc, int *count_words)
 	{
 		if (((elm_spc[i] != ' ' && elm_spc[i] != '\t') || count > 1) &&
 		    ((elm_spc[i] != ' ' && elm_spc[i] != '\t') ||
-		     (elm_spc[i + 1] != ' ' && elm_spc[i + 1] != '\t'
-		      && elm_spc[i + 1] != '\0')))
+		     (elm_spc[i + 1] != ' ' && elm_spc[i + 1] != '\t' &&
+		      elm_spc[i + 1] != '\0')))
 		{
 			copia[count] = elm_spc[i];
 			count++;

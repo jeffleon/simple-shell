@@ -38,8 +38,8 @@ typedef struct built
 extern char *environ[];
 char **split_word(char *cadena, int *countfree);
 void free_function(char **from, int *countfree);
-void execute_v(char **ln_cmd, long int *count_cmd
-	       , int *words, char **source, char **environ);
+void execute_v(char **ln_cmd, long int *count_cmd,
+	       int *words, char **source, char **environ, int isa);
 char *print_integers(long int *j, int *retorno);
 void errores(char *split_arg0, char *split_arg2, long int *count_cmd);
 char *_concat(char *direccion, char *comand);

@@ -15,7 +15,6 @@ int _salir_(char *line, char *word_wsp, char **split_2, int *countfree,
 {
 	char *pointer = "exit";
 
-	(void)error;
 	if ((_strcmp(split_2[0], pointer) == 0) && split_2[1] == NULL)
 	{
 		free(path);
@@ -23,7 +22,7 @@ int _salir_(char *line, char *word_wsp, char **split_2, int *countfree,
 		free(line);
 		free_function(split_2, countfree);
 		free(word_wsp);
-		exit(0);
+		exit(error);
 	}
 	return (0);
 }

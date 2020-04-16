@@ -132,18 +132,18 @@ int _help(char **source, char **environ, dir **test, long int *count_cmd)
 int _env(char **source, char **environ, dir **test, long int *count_cmd)
 {
 	int i = 0, j = 0;
-	char **env = (char **)environ[0];
-
+	char *env = NULL;
 	(void)source;
 	(void)test;
 	(void)count_cmd;
 	if (environ == NULL)
 		return (1);
-	for (i = 0; env[i] != NULL; i++)
+	for (i = 0; environ[i] != NULL; i++)
 	{
-		for (j = 0; *(env[i] + j); j++)
+		env = environ[i];
+		for (j = 0; env[j]; j++)
 		{}
-		write(1, env[i], j);
+		write(1, env, j);
 		write(1, "\n", 1);
 	}
 	return (1);
@@ -173,7 +173,6 @@ char *_union(long int *count_cmd, int *sizenum)
 	for (i = 0; inter[i]; i++)
 		total[4 + *sizenum + i] = inter[i];
 	total[4 + *sizenum + i] = '\0';
-	printf("mensaje : [%s]\n", total);
 	free(num);
 	return (total);
 }

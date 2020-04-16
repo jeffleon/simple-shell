@@ -96,7 +96,6 @@ char **_verification(dir **head, char *source, int *pointer)
 		return ('\0');
 	for (i = 0; copia; copia = copia->next, i++)
 	{
-
 		cmd_ver[i] = _concat(copia->direccion, source);
 	}
 	cmd_ver[i] = '\0';
@@ -110,7 +109,7 @@ char **_verification(dir **head, char *source, int *pointer)
 char  *_catchPATH(char **environ)
 {
 	char *aux = "PATH";
-	char **env = (char **)environ[0];
+	char **env =  environ;
 	char *path = NULL;
 	int j = 0, i = 0;
 
@@ -125,7 +124,7 @@ char  *_catchPATH(char **environ)
 		}
 		if (j == 4)
 		{
-			path = env[i];
+			path = _strdup(env[i]);
 			break;
 		}
 	}

@@ -4,8 +4,10 @@
  * @split_arg0: string to strtok and other
  * @count_cmd: count
  * @split_arg2: count
+ * @error: error
  */
-void errores(char *split_arg0, char *split_arg2, long int *count_cmd);
+void errores(char *split_arg0, char *split_arg2, long int *count_cmd
+	     , int error);
 
 /**
  * split_word - function that create a child
@@ -17,7 +19,7 @@ void errores(char *split_arg0, char *split_arg2, long int *count_cmd);
 char **split_word(char *cadena, int *countfree)
 {
 	char **from = NULL;
-	char token[] = " ";
+	char token[] = {' ', '\t', '\0'};
 	char *aux = NULL;
 	int i = 0, count = 0;
 
@@ -25,7 +27,7 @@ char **split_word(char *cadena, int *countfree)
 		return (NULL);
 	while (cadena[i])
 	{
-		if (cadena[i] == token[0])
+		if (cadena[i] == ' ' ||  cadena[i] == '\t')
 			count++;
 		i++;
 	}
@@ -72,46 +74,28 @@ void free_function(char **from, int *countfree)
 }
 /**
  * execute_v - function that create a child
- * @ln_cmd: line of comands
- * @count_cmd: count
- * @words: string
+ * @ln_cmd:line of comands
+ * @count_cmd:count
+ * @words:string
  * @source:quantity of words that had a split_word
  * @environ:list of vars
  * Return:empty
  */
-void execute_v(char **ln_cmd, long int *count_cmd,
-	       int *words, char **source, char **environ, int isa)
+int execute_v(char **ln_cmd, long int *count_cmd,
+	       int *words, char **source, char **environ)
 {
-	struct stat st;
-	int j = 0, a = 0;
-	(void)isa;
+	int a = 0;
+	int i = 0;
+	int error = 0;
+	int status = 0;
 
-	if (*source[0] != '/' && *source[0] != 46)
-	{
-		for (j = 0; ln_cmd[j]; j++)
-		{
-			if (stat(ln_cmd[j], &st) != -1)
-			{
-				a = fork();
-				if (a == 0)
-				{
-					execve(ln_cmd[j], source, environ);
-					break;
-				}
-			}
-		}
-	}
-	else
-	{
-		if ((stat(source[0], &st)) != -1)
-		{
-			a = fork();
-			if (a == 0)
-				execve(source[0], source, environ);
-		}
-	}
-	wait(NULL);
-	aux_errores(a, words, source, count_cmd);
+	error = aux_execute(ln_cmd, source, environ, &a, &i);
+	wait(&status);
+	status = WEXITSTATUS(status);
+	aux_errores(a, words, source, count_cmd, error);
+	if (status == 2)
+		error = 2;
+	return (error);
 }
 /**
  * print_integers - function that create a child
@@ -152,13 +136,15 @@ char *print_integers(long int *j, int *r)
  * @split_arg0: argument
  * @split_arg2: argument
  * @count_cmd: argument
- *
+ * @error: int
  */
 
-void errores(char *split_arg0, char *split_arg2, long int *count_cmd)
+void errores(char *split_arg0, char *split_arg2, long int *count_cmd,
+	     int error)
 {
-	int i, j, w = 0, z = 0, valor_total = 0;
-	char *msg_error = '\0', msg[] = ": not found\n", add[] = ": ";
+	int i, j, w = 0, z = 0, valor_total = 0, h = 0;
+	char *msg_error = '\0', add[] = ": ";
+	char *msg[] = { ": Permission denied\n", ": not found\n"};
 	char *p = '\0';
 
 	p = print_integers(count_cmd, &w);
@@ -166,7 +152,9 @@ void errores(char *split_arg0, char *split_arg2, long int *count_cmd)
 	{}
 	for (i = 0; split_arg2[i] != '\0'; i++)
 	{}
-	valor_total = (i + j + w + 16);
+	for (h = 0; *(msg[error - 126] + h) != '\0'; h++)
+	{}
+	valor_total = (i + j + w + h + 4);
 	msg_error = malloc(sizeof(char) * (valor_total));
 	if (msg_error == '\0')
 		return;
@@ -180,8 +168,8 @@ void errores(char *split_arg0, char *split_arg2, long int *count_cmd)
 		msg_error[z + i + 2 + w] = add[z];
 	for (z = 0; z < j; z++)
 		msg_error[z + i + 2 + w + 2] = split_arg0[z];
-	for (z = 0; z < 12; z++)
-		msg_error[z + i + 4 + w + j]  = msg[z];
+	for (z = 0; z < h; z++)
+		msg_error[z + i + 4 + w + j]  = msg[error - 126][z];
 	write(1, msg_error, valor_total);
 	free(msg_error);
 	free(p);

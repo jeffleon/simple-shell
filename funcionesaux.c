@@ -29,7 +29,6 @@ char *_strdup(char *str)
 	for (i = 0; str[i] != '\0'; i++)
 	{}
 	i++;
-
 	s = malloc(i * sizeof(char));
 	if (s == NULL)
 		return (NULL);
@@ -66,13 +65,14 @@ char *delete_spaces(char *elm_spc, int *count_words)
 {
 	int count = 0;
 	char *copia = NULL;
-	int i = 0;
+	size_t i = 0;
 
 	for (i = 0; elm_spc[i]; i++)
 	{
-		if ((elm_spc[i] != ' ' || count > 1) &&
-		    (elm_spc[i] != ' ' || (elm_spc[i + 1] != ' '
-					   && elm_spc[i + 1] != '\0')))
+		if (((elm_spc[i] != ' ' && elm_spc[i] != '\t') || count > 1) &&
+		    ((elm_spc[i] != ' ' && elm_spc[i] != '\t') ||
+		     (elm_spc[i + 1] != ' ' && elm_spc[i + 1] != '\t'
+		      && elm_spc[i + 1] != '\0')))
 			count++;
 	}
 	count++;
@@ -82,18 +82,14 @@ char *delete_spaces(char *elm_spc, int *count_words)
 	count = 0;
 	for (i = 0; elm_spc[i]; i++)
 	{
-		if ((elm_spc[i] != ' ' || count > 1) &&
-		    (elm_spc[i] != ' ' || (elm_spc[i + 1] != ' ' &&
-					   elm_spc[i + 1] != '\0')))
+		if (((elm_spc[i] != ' ' && elm_spc[i] != '\t') || count > 1) &&
+		    ((elm_spc[i] != ' ' && elm_spc[i] != '\t') ||
+		     (elm_spc[i + 1] != ' ' && elm_spc[i + 1] != '\t'
+		      && elm_spc[i + 1] != '\0')))
 		{
 			copia[count] = elm_spc[i];
 			count++;
 		}
-	}
-	if (copia == NULL)
-	{
-		printf("entre aqui \n");
-		return (NULL);
 	}
 	copia[count] = '\0';
 	*count_words = count;

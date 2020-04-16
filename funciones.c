@@ -144,7 +144,7 @@ void errores(char *split_arg0, char *split_arg2, long int *count_cmd,
 {
 	int i, j, w = 0, z = 0, valor_total = 0, h = 0;
 	char *msg_error = '\0', add[] = ": ";
-	char *msg[] = { ": Permission denied\n", ": not found\n", ":"};
+	char *msg[] = { ": Permission denied\n", ": not found\n"};
 	char *p = '\0';
 
 	p = print_integers(count_cmd, &w);

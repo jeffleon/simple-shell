@@ -136,14 +136,15 @@ int _env(char **source, char **environ, dir **test, long int *count_cmd)
 	(void)source;
 	(void)test;
 	(void)count_cmd;
-	if (environ == NULL)
+
+	for (i = 0; environ[i] != NULL; i++)
 	{
-		write(STDOUT_FILENO, "nil", 4);
-		write(STDOUT_FILENO, "\n", 2);
-	}
-	else
-	{
-		for (i = 0; environ[i] != NULL; i++)
+		if (environ == NULL)
+		{
+			write(STDOUT_FILENO, "nil", 4);
+			write(STDOUT_FILENO, "\n", 2);
+		}
+		else
 		{
 			env = environ[i];
 			for (j = 0; env[j]; j++)

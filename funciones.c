@@ -93,7 +93,7 @@ int execute_v(char **ln_cmd, long int *count_cmd,
 	wait(&status);
 	status = WEXITSTATUS(status);
 	aux_errores(a, words, source, count_cmd, error);
-	if (status == 2)
+	if (status == 2 || (_strcmp(source[0], "exit") == 0))
 		error = 2;
 	return (error);
 }
@@ -144,7 +144,7 @@ void errores(char *split_arg0, char *split_arg2, long int *count_cmd,
 {
 	int i, j, w = 0, z = 0, valor_total = 0, h = 0;
 	char *msg_error = '\0', add[] = ": ";
-	char *msg[] = { ": Permission denied\n", ": not found\n"};
+	char *msg[] = { ": Permission denied\n", ": not found\n", ":"};
 	char *p = '\0';
 
 	p = print_integers(count_cmd, &w);

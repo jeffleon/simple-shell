@@ -125,43 +125,42 @@ int aux_execute(char **ln_cmd, char **source, char **environ, int *a, int *i)
 
 
 /**
- * errores - function that create a child
+ * err_exit - function that create a child
  * @split_arg0: argument
  * @split_arg2: argument
  * @count_cmd: argument
- * @error: int
  */
 
 void err_exit(char *split_arg0, char *split_arg2, long int *count_cmd)
 {
-        int i, j, w = 0, z = 0, valor_total = 0, h = 0;
-        char *msg_error = '\0', add[] = "sh: ";
-        char msg[] = ": exit: Illegal number: ";
+	int i, j, w = 0, z = 0, valor_total = 0, h = 0;
+	char *msg_error = '\0', add[] = "sh: ";
+	char msg[] = ": exit: Illegal number: ";
 	char salto[] = "\n";
-        char *p = '\0';
+	char *p = '\0';
 
-        p = print_integers(count_cmd, &w);
-        for (j = 0; split_arg0[j] != '\0'; j++)
-        {}
-        for (i = 0; split_arg2[i] != '\0'; i++)
-        {}
-        for (h = 0; msg[h] != '\0'; h++)
-        {}
-        valor_total = (i + w + h + 6);
-        msg_error = malloc(sizeof(char) * (valor_total));
-        if (msg_error == '\0')
-                return;
-        for (z = 0; z < 4; z++)
-                msg_error[z] = add[z];
+	p = print_integers(count_cmd, &w);
+	for (j = 0; split_arg0[j] != '\0'; j++)
+	{}
+	for (i = 0; split_arg2[i] != '\0'; i++)
+	{}
+	for (h = 0; msg[h] != '\0'; h++)
+	{}
+	valor_total = (i + w + h + 5);
+	msg_error = malloc(sizeof(char) * (valor_total));
+	if (msg_error == '\0')
+		return;
+	for (z = 0; z < 4; z++)
+		msg_error[z] = add[z];
 	for (z = 0; z < w; z++)
-                msg_error[z + 4] = p[z];
-        for (z = 0; z < h; z++)
-                msg_error[z + 4 + w] = msg[z];
-        for (z = 0; z < i; z++)
-                msg_error[z + 4 + w + h] = split_arg2[z];
+		msg_error[z + 4] = p[z];
+	for (z = 0; z < h; z++)
+		msg_error[z + 4 + w] = msg[z];
+	for (z = 0; z < i; z++)
+		msg_error[z + 4 + w + h] = split_arg2[z];
 	for (z = 0; z < 1; z++)
 		msg_error[z + 4 + w + h + i] = salto[z];
-        write(STDERR_FILENO, msg_error, valor_total);
-        free(msg_error);
-        free(p);
+	write(STDERR_FILENO, msg_error, valor_total);
+	free(msg_error);
+	free(p);
 }

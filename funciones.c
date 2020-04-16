@@ -154,7 +154,7 @@ void errores(char *split_arg0, char *split_arg2, long int *count_cmd,
 	{}
 	for (h = 0; *(msg[error - 126] + h) != '\0'; h++)
 	{}
-	valor_total = (i + j + w + h + 5);
+	valor_total = (i + j + w + h + 4);
 	msg_error = malloc(sizeof(char) * (valor_total));
 	if (msg_error == '\0')
 		return;

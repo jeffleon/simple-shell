@@ -7,20 +7,23 @@
  * @countfree: words
  * @head: pointer to struct
  * @error: error
+ * @path: path
  * Return: zero
  */
 int _salir_(char *line, char *word_wsp, char **split_2, int *countfree,
-	    dir *head, int error)
+	    dir *head, int error, char *path)
 {
 	char *pointer = "exit";
 
+	(void)error;
 	if ((_strcmp(split_2[0], pointer) == 0) && split_2[1] == NULL)
 	{
+		free(path);
 		free_list(head);
 		free(line);
 		free_function(split_2, countfree);
 		free(word_wsp);
-		exit(error);
+		exit(0);
 	}
 	return (0);
 }

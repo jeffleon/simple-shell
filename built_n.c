@@ -2,9 +2,9 @@
 /**
  * _which - function that show the command which in shell
  * @source: doble pointer
- * @environ:list of vars
- * @test:path
- * @count_cmd:count of commands
+ * @environ: list of vars
+ * @test: path
+ * @count_cmd: count of commands ls
  * Return: 1 in case of successful
  */
 int _which(char **source, char **environ, dir **test, long int *count_cmd)
@@ -53,7 +53,7 @@ int _which(char **source, char **environ, dir **test, long int *count_cmd)
 /**
  * _cd - function that show the command cd in shell
  * @source: doble pointer
- * @environ:list of vars
+ * @environ:list of vars ls
  * @test:path
  * @count_cmd:count of commands
  * Return: 1 in case of successful
@@ -137,14 +137,20 @@ int _env(char **source, char **environ, dir **test, long int *count_cmd)
 	(void)test;
 	(void)count_cmd;
 	if (environ == NULL)
-		return (1);
-	for (i = 0; environ[i] != NULL; i++)
 	{
-		env = environ[i];
-		for (j = 0; env[j]; j++)
-		{}
-		write(1, env, j);
-		write(1, "\n", 1);
+		write(STDOUT_FILENO, "nil", 4);
+		write(STDOUT_FILENO, "\n", 2);
+	}
+	else
+	{
+		for (i = 0; environ[i] != NULL; i++)
+		{
+			env = environ[i];
+			for (j = 0; env[j]; j++)
+			{}
+			write(STDOUT_FILENO, env, j);
+			write(STDOUT_FILENO, "\n", 2);
+		}
 	}
 	return (1);
 }

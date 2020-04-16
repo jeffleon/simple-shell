@@ -3,7 +3,7 @@
  * errores - function that split a string
  * @split_arg0: string to strtok and other
  * @count_cmd: count
- * @split_arg2: count
+ * @split_arg2:  count
  * @error: error
  */
 void errores(char *split_arg0, char *split_arg2, long int *count_cmd
@@ -12,7 +12,7 @@ void errores(char *split_arg0, char *split_arg2, long int *count_cmd
 /**
  * split_word - function that create a child
  * @cadena: line of comands
- * @countfree: count
+ * @countfree: count lska
  * Return: pointer char
  */
 
@@ -154,7 +154,7 @@ void errores(char *split_arg0, char *split_arg2, long int *count_cmd,
 	{}
 	for (h = 0; *(msg[error - 126] + h) != '\0'; h++)
 	{}
-	valor_total = (i + j + w + h + 4);
+	valor_total = (i + j + w + h + 5);
 	msg_error = malloc(sizeof(char) * (valor_total));
 	if (msg_error == '\0')
 		return;
@@ -170,7 +170,7 @@ void errores(char *split_arg0, char *split_arg2, long int *count_cmd,
 		msg_error[z + i + 2 + w + 2] = split_arg0[z];
 	for (z = 0; z < h; z++)
 		msg_error[z + i + 4 + w + j]  = msg[error - 126][z];
-	write(1, msg_error, valor_total);
+	write(STDERR_FILENO, msg_error, valor_total);
 	free(msg_error);
 	free(p);
 }

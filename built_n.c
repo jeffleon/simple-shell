@@ -139,7 +139,7 @@ int _env(char **source, char **environ, dir **test, long int *count_cmd)
 
 	if (environ == NULL || *environ == NULL)
 	{
-		write(1, "not found enviromental variable", 31);
+		write(1, "not found enviromental variable\n", 32);
 		return (1);
 	}
 	for (i = 0; environ[i] != NULL; i++)

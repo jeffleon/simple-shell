@@ -65,7 +65,6 @@ int _salir_(char *line, char *word_wsp, char **split_2, int *countfree
 int _env(char **source, char **environ, dir **test, long int *count_cmd);
 void aux_errores(int a, int *words, char **source, long int *count_cmd
 		 , int error);
-
 int aux_execute(char **ln_cmd, char **source, char **environ, int *a, int *i);
 void err_exit(char *split_arg0, char *split_arg2, long int *count_cmd);
 

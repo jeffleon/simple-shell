@@ -31,7 +31,7 @@ typedef struct nodo
 typedef struct built
 {
 	char *comandokey;
-	int (*func)(char **source, dir **environ, dir **test
+	int (*func)(char **source, char **environ, dir **test
 		    , long int *count_cmd);
 } built_in;
 
@@ -56,19 +56,17 @@ char *delete_spaces(char *elm_spc, int *count_words);
 
 char *_union(long int *count_cmd, int *sizenum);
 
-int _cd(char **source, dir **environ, dir **test, long int *count_cmd);
-int _which(char **source, dir **environ, dir **test, long int *count_cmd);
-int _help(char **source, dir **environ, dir **test, long int *count_cmd);
-int _selection(char **source, dir **environ, dir **test, long int *count_cmd);
+int _cd(char **source, char **environ, dir **test, long int *count_cmd);
+int _which(char **source, char **environ, dir **test, long int *count_cmd);
+int _help(char **source, char **environ, dir **test, long int *count_cmd);
+int _selection(char **source, char **environ, dir **test, long int *count_cmd);
 int _salir_(char *line, char *word_wsp, char **split_2, int *countfree
-	    , dir *head, int error, char *path, dir *head_env);
-int _env(char **source, dir **environ, dir **test, long int *count_cmd);
+	  , dir *head, int error, char *path);
+int _env(char **source, char **environ, dir **test, long int *count_cmd);
 void aux_errores(int a, int *words, char **source, long int *count_cmd
 		 , int error);
 
 int aux_execute(char **ln_cmd, char **source, char **environ, int *a, int *i);
 void err_exit(char *split_arg0, char *split_arg2, long int *count_cmd);
 
-dir *lk_lst_env(char **environ);
-int _strlen(char *s);
 #endif

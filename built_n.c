@@ -7,7 +7,7 @@
  * @count_cmd: count of commands ls
  * Return: 1 in case of successful
  */
-int _which(char **source, dir **environ, dir **test, long int *count_cmd)
+int _which(char **source, char **environ, dir **test, long int *count_cmd)
 {
 	int j = 0, i = 0, count_list = 0;
 	struct stat st;
@@ -58,7 +58,7 @@ int _which(char **source, dir **environ, dir **test, long int *count_cmd)
  * @count_cmd:count of commands
  * Return: 1 in case of successful
  */
-int _cd(char **source, dir **environ, dir **test, long int *count_cmd)
+int _cd(char **source, char **environ, dir **test, long int *count_cmd)
 {
 	char s[100];
 	char *msg = NULL;
@@ -85,7 +85,7 @@ int _cd(char **source, dir **environ, dir **test, long int *count_cmd)
  * @count_cmd:count of commands
  * Return: 1 in case of successful
  */
-int _help(char **source, dir **environ, dir **test, long int *count_cmd)
+int _help(char **source, char **environ, dir **test, long int *count_cmd)
 {
 	ssize_t fd, read_data = 0;
 	char concatenar[6] = "help_";
@@ -129,26 +129,26 @@ int _help(char **source, dir **environ, dir **test, long int *count_cmd)
  * @count_cmd:count of commands
  * Return: 1 in case of successful
  */
-int _env(char **source, dir **environ, dir **test, long int *count_cmd)
+int _env(char **source, char **environ, dir **test, long int *count_cmd)
 {
-	dir *env = *environ;
+	int i = 0, j = 0;
+	char *env = NULL;
 	(void)source;
 	(void)test;
 	(void)count_cmd;
 
-	for (; env; env = env->next)
+	if (environ == NULL || *environ == NULL)
 	{
-		if (!(env->direccion))
-		{
-			write(STDOUT_FILENO, "nil", 4);
-			write(STDOUT_FILENO, "\n", 2);
-
-		}
-		else
-		{
-			write(STDOUT_FILENO, env->direccion, _strlen(env->direccion));
-			write(STDOUT_FILENO, "\n", 2);
-		}
+		write(1, "not found enviromental variable\n", 32);
+		return (1);
+	}
+	for (i = 0; environ[i] != NULL; i++)
+	{
+		env = environ[i];
+		for (j = 0; env[j]; j++)
+		{}
+		write(STDOUT_FILENO, env, j);
+		write(STDOUT_FILENO, "\n", 2);
 	}
 	return (1);
 }

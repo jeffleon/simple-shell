@@ -12,13 +12,12 @@
  * Return: zero
  */
 int _salir_(char *line, char *word_wsp, char **split_2, int *countfree,
-	    dir *head, int error, char *path, dir *head_env)
+	    dir *head, int error, char *path)
 {
 	char *pointer = "exit";
 
 	if ((_strcmp(split_2[0], pointer) == 0) && split_2[1] == NULL)
 	{
-		free_list(head_env);
 		free(path);
 		free_list(head);
 		free(line);

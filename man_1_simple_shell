@@ -1,0 +1,98 @@
+.TH HSH 1  "16 April 2020" "BSD"
+
+.SH NAME
+
+.B hsh
+
+- basic command interpreter
+
+.SH SYNOPSIS
+
+.B hsh [arg[0]] [arg[1]] [arg[2]] [...]
+
+.sp
+
+.SH DESCRIPTION
+
+
+
+hsh This mini_shell interprets the basic parameters and certain commands that are not part of the program, such as: help, among others. our interpretation of its basic syntax is to enter the command alone or with arguments, it works in interactive and non-interactive mode and looks for the addresses of each command that is part of the programs that use the central environment variable called PATH
+
+
+.SH Overview
+
+our command interpreter called (hsh), through the getline catches the input commands by any user after this goes to the next execution process here at this point it is verified if the child process means the command you want to use is executed correctly in case Otherwise it returns an error, our shell works in two interactive and non-interactive modes, this means that a new pseudo-terminal is assigned to be used within the zone. Unlike console mode, in which exclusive access is granted to the console device, an arbitrary number of zlogin sessions can be opened at any time in interactive mode. Interactive mode is activated when a command to issue is not included. Programs that require a terminal device, such as an editor, work correctly in this mode, and in non-interactive mode it is used to run shell sequences that manage the zone. Non-interactive mode does not associate a new pseudo-terminal. This mode is activated when a command is provided to execute within the zone.
+
+
+.SH Invocation
+
+If no string is found in the character string, regardless of whether it is a command or if it is a space or a horizontal tab at the time of ENTER, it will not execute anything and will display the prompt again, waiting for the user to enter any string or spaces etc. If so, suppose we enter a command then from the first moment it is verified if it is a command that handles our interpreter and will look for it in the PATH if it is a program but is simply a built -in after this it will be executed through the call to the execv system. showing the result correctly on screen
+
+Here is an example of how you can run our shell:
+
+   ./hsh, here you run it immediately will show you this room this is our prompt:
+
+   $ [your command / string] - [options] - [system directories]
+
+.SH Lexical Structure
+
+the hsh command interpreter is capable of handling user-entered blanks and horizontal tabs, but does not handle redirect operators like pipelines among others
+
+.SH Commands
+
+the hsh command interpreter is capable of handling user-entered blanks and horizontal tabs, but does not handle redirect operators like pipelines among others
+
+
+.SH Simple Commands
+
+Our shell handles and executes the commands with or without addresses clearly from the PATH environment variable:
+
+   -ls [/ bin / ls] Lists the files and directories in the current working directory where the user is
+
+   -pwd Print the current working directory
+
+   -cat displays information about a file or directory
+
+   -which shows the location within the PATH of a program
+
+   -help Although it is not in the sh, we handle this command
+
+   -exit every time the user executes exit will automatically exit our shell
+
+   -ps shows the status of processes
+
+.SH EXIT STATUS
+
+The output or every time that exit is executed is our shell will be different depending on the case for example:
+
+   Case 1: When the user erroneously enters a command, it will return an output with a value equal to 2
+
+   Case 2: The user correctly entered the command this exit will be equal to 0 since the process was successful
+
+   Case 3: When the file or directory does not have permissions and the user tries to execute them this exit returns the value of 126
+
+   Case 4: If the command that you enter is not part of the programs in the path and is also wrong, it returns the value of 127
+
+.SH ENVIRONMENT
+
+.sp
+
+
+    PATH       The default search path for executables.
+
+
+.SH Example
+.sp
+
+Below is an example of using our shell, here we will show what is in the temporary directory and list it in common long format:
+
+   $ ls -la / tmp
+
+.SH BUGS
+
+
+    No known bugs. If any bug is detected, please do not hesitate to open an issue.
+
+
+.SH AUTHOR
+Written by Daniela Morales [1524@holbertonschool.com] and Jefferson Leon [1527@holbertonschool.com].

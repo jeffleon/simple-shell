@@ -87,26 +87,11 @@ int execute_v(char **ln_cmd, long int *count_cmd,
 	int a = 0;
 	int i = 0;
 	int error = 0;
-	int status = 0, count = 0;
+	int status = 0;
 
 	error = aux_execute(ln_cmd, source, environ, &a, &i);
 	wait(&status);
 	status = WEXITSTATUS(status);
-	if (error == 0)
-	{
-		for (count = 0; source[0][count]; count++)
-		{}
-		if (count > 2)
-		{
-			if (*source[0] == '.' && source[0][1] == ' '
-			    && source[0][2] == '.')
-				error = 127;
-			else
-				error = 126;
-		}
-		else
-			error = 126;
-	}
 	aux_errores(a, words, source, count_cmd, error);
 	if (status == 2 || (_strcmp(source[0], "exit") == 0))
 		error = 2;

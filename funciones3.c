@@ -113,7 +113,6 @@ int aux_execute(char **ln_cmd, char **source, char **environ, int *a, int *i)
 				*a = fork();
 				if (*a == 0)
 					execve(source[0], source, environ);
-				return (0);
 			}
 		}
 	}

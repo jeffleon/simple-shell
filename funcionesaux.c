@@ -103,7 +103,7 @@ char *delete_spaces(char *elm_spc, int *count_words)
  * @source: doble pointer
  * Return:rt
  */
-int _selection(char **source, char **environ, dir **test, long int *count_cmd)
+int _selection(char **source, dir **environ, dir **test, long int *count_cmd)
 {
 	built_in comands[] = {{"which", _which},
 			      {"help", _help},

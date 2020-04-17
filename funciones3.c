@@ -7,16 +7,18 @@
  * @countfree: words
  * @head: pointer to struct
  * @error: error
+ * @head_env : this is a pointer
  * @path: path
  * Return: zero
  */
 int _salir_(char *line, char *word_wsp, char **split_2, int *countfree,
-	    dir *head, int error, char *path)
+	    dir *head, int error, char *path, dir *head_env)
 {
 	char *pointer = "exit";
 
 	if ((_strcmp(split_2[0], pointer) == 0) && split_2[1] == NULL)
 	{
+		free_list(head_env);
 		free(path);
 		free_list(head);
 		free(line);
@@ -165,4 +167,20 @@ void err_exit(char *split_arg0, char *split_arg2, long int *count_cmd)
 	write(STDERR_FILENO, msg_error, valor_total);
 	free(msg_error);
 	free(p);
+}
+/**
+ * lk_lst_env - function that create a child
+ * @environ: argument
+ * Return: return a pointer
+ *
+ */
+
+dir *lk_lst_env(char **environ)
+{
+	int i = 0;
+	dir *head_env = NULL;
+
+	for (i = 0; environ[i] != NULL; i++)
+		head_env = addnode(&head_env, environ[i]);
+	return (head_env);
 }

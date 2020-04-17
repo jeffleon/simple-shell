@@ -15,7 +15,7 @@ void sighandler(int sighandler)
  */
 int main(void)
 {
-	dir *head = NULL;
+	dir *head = NULL, *head_env = NULL;
 	size_t len = 0;
 	ssize_t linesize = 0;
 	char *_path = NULL, *word_wsp = NULL, *line = NULL;
@@ -26,6 +26,7 @@ int main(void)
 
 	_path = _catchPATH(environ);
 	head = split_path(_path, &count_list), signal(SIGINT, sighandler);
+	head_env = lk_lst_env(environ);
 	for (isa = isatty(0); linesize != EOF; count_cmd++)
 	{
 		if (isa)
@@ -42,8 +43,8 @@ int main(void)
 			continue;
 		}
 		split_2 = split_word(word_wsp, &countfree);
-		_salir_(line, word_wsp, split_2, &countfree, head, error, _path);
-		built_in_ent = _selection(split_2, environ, &head, &count_cmd);
+		_salir_(line, word_wsp, split_2, &countfree, head, error, _path, head_env);
+		built_in_ent = _selection(split_2, &head_env, &head, &count_cmd);
 		test = _verification(&head, split_2[0], &count_list);
 		if (built_in_ent == 0)
 			error = execute_v(test, &count_cmd, &countfree, split_2,
@@ -53,6 +54,5 @@ int main(void)
 	}
 	if (isa)
 		write(STDOUT_FILENO, "\n", 2);
-	free(line), free(_path);
-	return (free_list(head), error);
+	return (free(line), free(_path), free_list(head_env), free_list(head), error);
 }

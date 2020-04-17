@@ -7,7 +7,6 @@
  * @countfree: words
  * @head: pointer to struct
  * @error: error
- * @head_env : this is a pointer
  * @path: path
  * Return: zero
  */

@@ -138,17 +138,8 @@ int _env(char **source, dir **environ, dir **test, long int *count_cmd)
 
 	for (; env; env = env->next)
 	{
-		if (!(env->direccion))
-		{
-			write(STDOUT_FILENO, "nil", 4);
-			write(STDOUT_FILENO, "\n", 2);
-
-		}
-		else
-		{
-			write(STDOUT_FILENO, env->direccion, _strlen(env->direccion));
-			write(STDOUT_FILENO, "\n", 2);
-		}
+		write(STDOUT_FILENO, env->direccion, _strlen(env->direccion));
+		write(STDOUT_FILENO, "\n", 2);
 	}
 	return (1);
 }
